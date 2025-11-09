@@ -5,6 +5,7 @@ SMK Prima Bangsa adalah Sekolah Menengah Kejuruan yang fokus pada kompetensi vok
 Preview
 -------
 - Buka file `index.php` di folder proyek untuk melihat tampilan situs secara lokal.
+- web public : primaweb.wuaze.com
 
 Persiapan awal
 -------------
