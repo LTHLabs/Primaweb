@@ -88,6 +88,7 @@ Struktur proyek (ringkas)
   - autoload.php         - autoloader Composer  
   - phpmailer/           - library PHPMailer
 
+<<<<<<< HEAD
 Pengaturan email (SMTP) dan database
 --------------------------------
 1. Konfigurasi email (`config/email_config.php`):
@@ -129,6 +130,7 @@ Lisensi
 Template asli mengikuti lisensi MIT (cek lisensi asli jika ada). Modifikasi ini untuk keperluan sekolah; periksa lisensi asli sebelum penggunaan publik/komersial.
 
 
+
 Catatan untuk pengelola
 -----------------------
 Checklist deployment:
@@ -158,3 +160,11 @@ Pengembangan lanjutan:
 Hubungi pengembang jika butuh bantuan implementasi backend atau integrasi layanan.
 
 Terima kasih — semoga README ini membantu pengelolaan dan pengembangan situs SMK Prima Bangsa.
+
+Catatan untuk pengelola
+-----------------------
+- Untuk fitur pendaftaran (PMB) lanjutan yang membutuhkan upload dokumen atau penyimpanan data, dibutuhkan
+	backend (mis. server PHP/Node/Python dan database) atau integrasi ke Google Forms / layanan email. Saya dapat
+	membantu menambahkan form front-end atau membuat rancangan backend apabila Anda menginginkannya.
+
+
