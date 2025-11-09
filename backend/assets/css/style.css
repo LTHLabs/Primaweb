@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap");
 /*===========================
-  COMMON css 
+   css 
 ===========================*/
 :root {
   --font-family: "Inter", sans-serif;
@@ -775,7 +775,7 @@ p {
 
 /*===== SIDEBAR ONE =====*/
 .sidebar-logo {
-  width: 35%;
+  width: 30%;
   
 }
 .sidebar-left {
@@ -830,6 +830,7 @@ p {
 }
 .sidebar-left .sidebar-content {
   padding: 0px 30px;
+  margin: -23px 1px;
 }
 .sidebar-left .sidebar-content .sidebar-menu {
   margin-top: 30px;

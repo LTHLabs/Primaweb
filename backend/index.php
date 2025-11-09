@@ -1,3 +1,12 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+$contact_flash = $_SESSION['contact_flash'] ?? null;
+if (isset($_SESSION['contact_flash'])) {
+  unset($_SESSION['contact_flash']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,14 +43,15 @@
       <div class="row">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="#hero-area">
               <img src="assets/images/ipb.png" alt="Logo" />
+
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
-              aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="toggler-icon"></span>
-              <span class="toggler-icon"></span>
-              <span class="toggler-icon"></span>
+            aria-controls="navbarNine" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="toggler-icon"></span>
+            <span class="toggler-icon"></span>
+            <span class="toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse sub-menu-bar" id="navbarNine">
@@ -65,7 +75,7 @@
                   <a class="page-scroll" href="#contact">Kontak</a>
                 </li>
                 <li class="nav-item">
-                  <a class="page-scroll" href="#contact">PPDB</a>
+                  <a class="page-scroll" href="#call-action">PMB</a>
                 </li>
               </ul>
             </div>
@@ -92,7 +102,6 @@
         <a href="index.html"><img src="assets/images/ipb.png" alt="Logo SMK Prima Bangsa" /></a>
       </div>
       <p class="text">SMK Prima Bangsa — sekolah vokasi yang mempersiapkan siswa menjadi tenaga kerja terampil dan berkarakter.</p>
-      <!-- logo -->
       <div class="sidebar-menu">
         <h5 class="menu-title">Tautan Cepat</h5>
         <ul>
@@ -102,7 +111,6 @@
           <li><a href="#contact">Kontak</a></li>
         </ul>
       </div>
-      <!-- menu -->
       <div class="sidebar-social align-items-center justify-content-center">
         <h5 class="social-title">Ikuti Kami</h5>
         <ul>
@@ -117,14 +125,13 @@
           </li>
         </ul>
       </div>
-      <!-- sidebar social -->
     </div>
   </div>
   <div class="overlay-left"></div>
 
   <!--====== SIDEBAR AKHIR ======-->
 
-  <!-- Start header Area -->
+  <!-- Awal header Area -->
   <section id="hero-area" class="header-area header-eight">
     <div class="container">
       <div class="row align-items-center">
@@ -150,15 +157,15 @@
         <div class="col-lg-6 col-md-12 col-12">
             <div class="header-image">
             <!-- <img src="assets/images/header/hero-image.webp" alt="Foto Utama SMK Prima Bangsa" /> -->
-             <iframe style="max-width:100%" src="https://wordwall.net/embed/cf933df504bf4641a9dd3d66d11a7be6?themeId=54&templateId=3&fontStackId=12" width="00" height="380" frameborder="0" allowfullscreen></iframe>
+             <iframe style="max-width:100%; border-radius:3%;" src="https://wordwall.net/embed/cf933df504bf4641a9dd3d66d11a7be6?themeId=54&templateId=3&fontStackId=12" width="100%" height="380" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End header Area -->
+  <!-- Akhir header Area -->
 
-  <!--====== ABOUT/TENTANG AWAL ======-->
+  <!--====== ABOUT/TENTANG AWAL AREA  ======-->
 
   <section id="about" class="about-area about-five">
     <div class="container">
@@ -294,7 +301,6 @@
 
   <!--====== ABOUT AKHIR ======-->
 
-  <!-- ===== service-area start ===== -->
   <section id="services" class="services-area services-eight">
     <div class="section-title-five">
       <div class="container">
@@ -313,7 +319,6 @@
       </div>
     </div>
 
-    <!--======  End Section Title Five ======-->
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6">
@@ -403,10 +408,9 @@
       </div>
     </div>
   </section>
-  <!-- ===== service-area end ===== -->
 
 
-  <!-- Start Pricing  Area -->
+  <!-- Awal Fasilitas Area -->
   <section id="facilities" class="pricing-area pricing-fourteen">
     <div class="section-title-five">
       <div class="container">
@@ -424,7 +428,6 @@
         </div>
       </div>
     </div>
-    <!--======  End Section Title Five ======-->
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-12">
@@ -493,11 +496,11 @@
       </div>
     </div>
   </section>
-  <!--/ End Pricing  Area -->
+  <!-- Akhir Fasilitas Area -->
 
 
 
-  <!-- Start Cta Area -->
+  <!-- Awal Cta Area -->
   <section id="call-action" class="call-action">
     <div class="container">
       <div class="row justify-content-center">
@@ -509,14 +512,14 @@
               dan pembinaan karir yang terarah untuk masa depan siswa.
             </p>
             <div class="light-rounded-buttons">
-              <a href="#ppdb" class="btn primary-btn-outline">Daftar Sekarang</a>
+              <a href="https://pmb.ipbcirebon.ac.id/" class="btn primary-btn-outline">Daftar Sekarang</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- End Cta Area -->
+  <!-- Akhir Cta Area -->
 
 
 
@@ -537,7 +540,6 @@
         </div>
       </div>
     </div>
-    <!--======  End Section Title Five ======-->
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-12">
@@ -560,7 +562,6 @@
             </div>
           </div>
 
-          <!-- End Single News -->
         </div>
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-news">
@@ -582,7 +583,6 @@
             </div>
           </div>
 
-          <!-- End Single News -->
         </div>
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-news">
@@ -607,9 +607,9 @@
       </div>
     </div>
   </div>
-  <!-- End Latest News Area -->
+  <!-- Akhir Berita & Kegiatan Area -->
 
-  <!-- Start Brand Area -->
+  <!-- Awal Client Area -->
   <div id="clients" class="brand-area section">
     <div class="section-title-five">
       <div class="container">
@@ -627,7 +627,6 @@
         </div>
       </div>
     </div>
-    <!--======  End Section Title Five ======-->
     
 <div class="container">
       <div class="row">
@@ -650,9 +649,9 @@
       </div>
     </div>
   </div>
-  <!-- End Brand Area -->
-
-  <!-- Start Testimonial Area -->
+  <!-- Akhir Client Area -->
+   
+  <!-- Awal Testimonial Area -->
   <section id="testimonials" class="testimonial-area section">
     <div class="section-title-five">
       <div class="container">
@@ -675,7 +674,7 @@
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-testimonial">
             <div class="image">
-              <img src="assets/images/testimonial/student1.jpg" alt="Siswa">
+              <img src="#" alt="Siswa">
             </div>
             <div class="content">
               <p>"SMK Prima Bangsa memberikan fondasi yang kuat untuk karir saya di bidang IT. 
@@ -689,7 +688,7 @@
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-testimonial">
             <div class="image">
-              <img src="assets/images/testimonial/student2.jpg" alt="Siswa">
+              <img src="#" alt="Siswa">
             </div>
             <div class="content">
               <p>"Program TKJ di sini sangat komprehensif. Saya mendapatkan sertifikasi industri 
@@ -703,7 +702,7 @@
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-testimonial">
             <div class="image">
-              <img src="assets/images/testimonial/student3.jpg" alt="Siswa">
+              <img src="#" alt="Siswa">
             </div>
             <div class="content">
               <p>"Fasilitas studio DKV yang lengkap dan guru-guru profesional membantu saya 
@@ -716,9 +715,9 @@
       </div>
     </div>
   </section>
-  <!-- End Testimonial Area -->
+  <!-- Akhir Testimonial Area -->
 
-  <!-- ========================= contact-section start ========================= -->
+  <!-- ========================= contact-section Awal ========================= -->
   <section id="contact" class="contact-section">
     <div class="container">
       <div class="row">
@@ -779,21 +778,35 @@
                 </div>
               </div>
             </div>
-            <form action="#" class="contact-form">
+      <?php
+      if (!empty($contact_flash)) {
+        $c = $contact_flash['status'] ?? '';
+        $msg = isset($contact_flash['msg']) ? htmlspecialchars($contact_flash['msg']) : '';
+        if ($c === 'success') {
+          echo '<div class="alert alert-success" role="alert">✅ ' . ($msg ?: 'Pesan berhasil dikirim. Terima kasih.') . '</div>';
+        } elseif ($c === 'success_mailfail') {
+          echo '<div class="alert alert-warning" role="alert">⚠️ ' . ($msg ?: 'Pesan tersimpan, namun pengiriman email gagal. Silakan konfigurasi SMTP atau periksa pengaturan server email.') . '</div>';
+        } else {
+          echo '<div class="alert alert-danger" role="alert">❌ Terjadi kesalahan: ' . $msg . '</div>';
+        }
+      }
+      ?>
+
+      <form action="controllers/contact.php" method="post" class="contact-form">
               <div class="row">
                 <div class="col-md-6">
-                  <input type="text" name="name" id="name" placeholder="Nama" required />
+                  <input type="text" name="name" id="name" placeholder="Nama"  />
                 </div>
                 <div class="col-md-6">
-                  <input type="email" name="email" id="email" placeholder="Email" required />
+                  <input type="email" name="email" id="email" placeholder="Email"  />
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <input type="text" name="phone" id="phone" placeholder="Telepon" required />
+                  <input type="text" name="phone" id="phone" placeholder="Telepon"  />
                 </div>
                 <div class="col-md-6">
-                  <input type="text" name="subject" id="subject" placeholder="Perihal" required />
+                  <input type="text" name="subject" id="subject" placeholder="Perihal"  />
                 </div>
               </div>
               <div class="row">
@@ -816,9 +829,9 @@
       </div>
     </div>
   </section>
-  <!-- ========================= contact-section end ========================= -->
+  <!-- ========================= contact-section Akhir ========================= -->
 
-  <!-- ========================= map-section end ========================= -->
+  <!-- ========================= map-section ========================= -->
   <section class="map-section map-style-9">
       <div class="map-container">
       <object title="Peta SMK Prima Bangsa - Cirebon" style="border:0; height: 500px; width: 100%;"
@@ -826,8 +839,9 @@
     </div>
     </div>
   </section>
-  <!-- ========================= map-section end ========================= -->
+  <!-- ========================= map-section ========================= -->
 
+  <!--====== FOOTER AREA AWAL ======-->
   <footer class="footer-area footer-eleven">
     <div class="footer-top">
       <div class="container">
@@ -867,7 +881,7 @@
               <div class="footer-widget f-link">
                 <h5>Tautan Penting</h5>
                 <ul>
-                  <li><a href="#ppdb">Info PPDB</a></li>
+                  <li><a href="https://pmb.ipbcirebon.ac.id/#informasi-pmb">Info PMB</a></li>
                   <li><a href="#about">Tentang Kami</a></li>
                   <li><a href="#news">Berita</a></li>
                   <li><a href="#contact">Hubungi Kami</a></li>
@@ -890,6 +904,7 @@
       </div>
     </div>
   </footer>
+  <!--====== FOOTER AREA AKHIR ======-->
 	
 
   <a href="#" class="scroll-top btn-hover">
