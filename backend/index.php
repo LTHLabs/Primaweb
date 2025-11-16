@@ -6,6 +6,19 @@ $contact_flash = $_SESSION['contact_flash'] ?? null;
 if (isset($_SESSION['contact_flash'])) {
   unset($_SESSION['contact_flash']);
 }
+require_once __DIR__ . '/config/db_config.php';
+$pendaftar_rows = [];
+$db_error = null;
+try {
+  $mysqli = db_connect();
+  $res = $mysqli->query('SELECT * FROM pendaftaran_siswa ORDER BY tanggal_daftar DESC');
+  while ($r = $res->fetch_assoc()) {
+    $pendaftar_rows[] = $r;
+  }
+  $mysqli->close();
+} catch (Exception $e) {
+  $db_error = $e->getMessage();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,6 +90,13 @@ if (isset($_SESSION['contact_flash'])) {
                 <li class="nav-item">
                   <a class="page-scroll" href="#call-action">PMB</a>
                 </li>
+                <li class="nav-item">
+                  <?php if (!empty($_SESSION['admin_logged_in'])): ?>
+                    <a class="page-scroll" href="admin/pendaftaran.php">Admin</a>
+                  <?php else: ?>
+                    <a class="btn btn-outline-info" href="admin/login.php">Admin</a>
+                  <?php endif; ?>
+                </li>
               </ul>
             </div>
 
@@ -143,7 +163,7 @@ if (isset($_SESSION['contact_flash'])) {
               di bidang teknologi dan industri.
             </p>
             <div class="button">
-              <a href="#contact" class="btn primary-btn">Daftar Sekarang</a>
+              <a href="#pendaftaran-form" class="btn primary-btn">Daftar Sekarang</a>
               <a href="https://www.youtube.com/watch?v=-rRAuQzVq4s"
                 class="glightbox video-button">
                 <span class="btn icon-btn rounded-full">
@@ -156,8 +176,8 @@ if (isset($_SESSION['contact_flash'])) {
         </div>
         <div class="col-lg-6 col-md-12 col-12">
             <div class="header-image">
-            <!-- <img src="assets/images/header/hero-image.webp" alt="Foto Utama SMK Prima Bangsa" /> -->
-             <iframe style="max-width:100%; border-radius:3%;" src="https://wordwall.net/embed/cf933df504bf4641a9dd3d66d11a7be6?themeId=54&templateId=3&fontStackId=12" width="100%" height="380" frameborder="0" allowfullscreen></iframe>
+            <img src="assets/images/header/hero-image.webp" alt="Foto Utama SMK Prima Bangsa" />
+             <!-- <iframe style="max-width:100%; border-radius:3%;" src="https://wordwall.net/embed/cf933df504bf4641a9dd3d66d11a7be6?themeId=54&templateId=3&fontStackId=12" width="100%" height="380" frameborder="0" allowfullscreen></iframe> -->
           </div>
         </div>
       </div>
@@ -608,6 +628,135 @@ if (isset($_SESSION['contact_flash'])) {
     </div>
   </div>
   <!-- Akhir Berita & Kegiatan Area -->
+
+    <!-- Awal Daftar Pendaftar -->
+  <section id="daftar-pendaftar" class="section">
+    <div class="container">
+      <div class="section-title-five">
+        <div class="row">
+          <div class="col-12">
+            <div class="content">
+              <h6>Daftar Pendaftar</h6>
+              <h2 class="fw-bold">Siswa yang Telah Mendaftar</h2>
+              <p>Di bawah ini daftar pendaftar yang masuk melalui formulir pendaftaran.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Pendaftaran Form -->
+      <div id="pendaftaran-form" class="row mb-4">
+        <div class="col-12">
+          <div class="card p-3">
+            <h5>Form Pendaftaran Siswa Baru</h5>
+            <form action="controllers/pendaftaran_create.php" method="post" enctype="multipart/form-data">
+              <div class="row">
+                <div class="col-md-4 mb-2"><input class="form-control" name="nisn" placeholder="NISN" required></div>
+                <div class="col-md-8 mb-2"><input class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" required></div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 mb-2"><input class="form-control" name="tempat_lahir" placeholder="Tempat Lahir"></div>
+                <div class="col-md-4 mb-2"><input type="date" class="form-control" name="tanggal_lahir" placeholder="Tanggal Lahir"></div>
+                <div class="col-md-4 mb-2">
+                  <select class="form-control" name="jenis_kelamin">
+                    <option value="">- Jenis Kelamin -</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 mb-2"><textarea class="form-control" name="alamat" placeholder="Alamat"></textarea></div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-2"><input class="form-control" name="asal_sekolah" placeholder="Asal Sekolah"></div>
+                <div class="col-md-6 mb-2"><input class="form-control" name="no_hp" placeholder="No. HP" required></div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-2"><input type="email" class="form-control" name="email" placeholder="Email" required></div>
+                <div class="col-md-6 mb-2">
+                  <select class="form-control" name="program_keahlian">
+                    <option value="">- Pilih Program Keahlian -</option>
+                    <option value="Rekayasa Perangkat Lunak (RPL)">Rekayasa Perangkat Lunak (RPL)</option>
+                    <option value="Teknik Komputer Jaringan (TKJ)">Teknik Komputer Jaringan (TKJ)</option>
+                    <option value="Desain Komunikasi Visual (DKV)">Desain Komunikasi Visual (DKV)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-2">
+                  <label class="form-label">Foto Formal (jpg/png, max 2MB)</label>
+                  <input type="file" class="form-control" name="foto_formal" accept="image/*">
+                </div>
+                <div class="col-md-6 mb-2">
+                  <label class="form-label">Foto Ijazah (jpg/png, max 2MB)</label>
+                  <input type="file" class="form-control" name="foto_ijazah" accept="image/*">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-end mt-2">
+                  <button class="btn primary-btn" type="submit">Daftar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="table-responsive">
+            <?php if (!empty($db_error)) : ?>
+              <div class="alert alert-danger">Gagal mengambil data dari database: <?= htmlspecialchars($db_error); ?></div>
+            <?php elseif (empty($pendaftar_rows)) : ?>
+              <div class="alert alert-info">Belum ada data pendaftar.</div>
+            <?php else : ?>
+              <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                  <tr>
+                    <th>#</th>
+                    <th>NISN</th>
+                    <th>Nama Lengkap</th>
+                    <th>TTL</th>
+                    <th>JK</th>
+                    <th>No. HP</th>
+                    <th>Program Keahlian</th>
+                    <th>Asal Sekolah</th>
+                    <th>Email</th>
+                    <th>File Foto / Ijazah</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $i = 1; foreach ($pendaftar_rows as $row) : ?>
+                    <tr>
+                      <td><?= $i++; ?></td>
+                      <td><?= htmlspecialchars($row['nisn'] ?? ''); ?></td>
+                      <td><?= htmlspecialchars($row['nama_lengkap'] ?? ''); ?></td>
+                      <td>
+                        <?= htmlspecialchars(($row['tempat_lahir'] ?? '') . ' / ' . ($row['tanggal_lahir'] ?? '')); ?>
+                      </td>
+                      <td><?= htmlspecialchars($row['jenis_kelamin'] ?? ''); ?></td>
+                      <td><?= htmlspecialchars($row['no_hp'] ?? ''); ?></td>
+                      <td><?= htmlspecialchars($row['program_keahlian'] ?? ''); ?></td>
+                      <td><?= htmlspecialchars($row['asal_sekolah'] ?? ''); ?></td>
+                      <td><?= htmlspecialchars($row['email'] ?? ''); ?></td>
+                      <td>
+                        <?php if (!empty($row['foto_formal'])): ?>
+                          <a href="<?= htmlspecialchars($row['foto_formal']); ?>" target="_blank">Foto</a>
+                        <?php endif; ?>
+                        <?php if (!empty($row['foto_ijazah'])): ?>
+                          &nbsp;|&nbsp; <a href="<?= htmlspecialchars($row['foto_ijazah']); ?>" target="_blank">Ijazah</a>
+                        <?php endif; ?>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Akhir Daftar Pendaftar -->
 
   <!-- Awal Client Area -->
   <div id="clients" class="brand-area section">

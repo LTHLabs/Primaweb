@@ -42,11 +42,11 @@ Cara menjalankan (lokal)
 
    B. Menggunakan PHP built-in server:
       ```powershell
-      # Untuk frontend statis saja
+     
       cd D:\Laragon\laragon\www\Primaweb\frontend
       php -S localhost:8000
 
-      # Untuk versi dengan backend (form kontak dll)
+
       cd D:\Laragon\laragon\www\Primaweb\backend
       php -S localhost:8000
       ```
@@ -160,6 +160,28 @@ Pengembangan lanjutan:
   3. Layanan form builder (Typeform, JotForm dll)
 Hubungi pengembang jika butuh bantuan implementasi backend atau integrasi layanan.
 
+## Recent Project Updates
+
+- **Pendaftaran Siswa Baru (PSB)**: ditambahkan sistem pendaftaran lengkap (form pada landing page) yang menyimpan data pendaftar ke database dan menerima upload file (foto formal, foto ijazah). Tabel baru: `pendaftaran_siswa` (ditambahkan ke dump SQL di `backend/primadb.sql`).
+- **Controllers**: dibuat controller CRUD untuk pendaftaran di `backend/controllers/` — `pendaftaran_create.php`, `pendaftaran_update.php`, `pendaftaran_delete.php`, `pendaftaran_list.php`.
+- **Upload**: folder upload untuk pendaftaran dibuat di `backend/uploads/pendaftaran/`.
+- **Admin UI & Auth**: halaman admin untuk melihat dan mengedit pendaftar ditambahkan di `backend/admin/` (termasuk `login.php`, `logout.php`, `pendaftaran.php`, `edit_pendaftaran.php`). Saat ini autentikasi admin memakai konfigurasi prototype; disarankan untuk mengganti ke penyimpanan hashed password (`password_hash`/`password_verify`) atau menyimpan akun admin di database.
+- **Integrasi Landing Page**: `backend/index.php` sekarang menampilkan form pendaftaran dan tabel daftar pendaftar yang diambil dari database.
+- **Contact Form**: form kontak tetap menyimpan pesan ke database dan mengirim email menggunakan PHPMailer (konfigurasi SMTP di `backend/config/email_config.php`).
+- **Bug fixes**:
+   - `backend/config/db_config.php` diperbaiki agar tidak mengeluarkan HTML ketika di-`require` oleh file lain (cek koneksi hanya ditampilkan ketika file diakses langsung).
+   - Perbaikan sintaks dan keluaran yang tidak diinginkan diperbaiki.
+   - JavaScript bug: dua salinan `assets/js/main.js` diperbarui (backend + frontend) untuk menghindari error saat mengeksekusi `querySelector` pada href yang bukan selector CSS (mis. `admin/login.php`) — ini memperbaiki runtime error saat mengklik link Admin.
+
+## Team
+
+Anggota kelompok / tim proyek:
+
+- Muhammad Luthfi — Developer / Backend Engineer
+- Siti Julaeha — Frontend & UI Designer
+- Dudi Widiyanto — DevOps / Tester
+
+Catatan: peran di atas bersifat opsional/deskriptif; ubah sesuai kebutuhan proyek.
 Terima kasih — semoga README ini membantu pengelolaan dan pengembangan situs SMK Prima Bangsa.
 
 Catatan untuk pengelola
