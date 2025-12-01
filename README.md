@@ -89,7 +89,6 @@ Struktur proyek (ringkas)
   - autoload.php         - autoloader Composer  
   - phpmailer/           - library PHPMailer
 
-<<<<<<< HEAD
 Pengaturan email (SMTP) dan database
 --------------------------------
 1. Konfigurasi email (`config/email_config.php`):
