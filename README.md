@@ -122,9 +122,6 @@ Pengaturan email (SMTP) dan database
    - Sesuaikan konfigurasi di `config/db_config.php`
 
 
-Referensi kredit
-- Ayro UI — https://ayroui.com/  
-- ThemeWagon — https://themewagon.com/
 
 Lisensi
 -------
