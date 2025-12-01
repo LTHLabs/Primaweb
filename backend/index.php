@@ -681,11 +681,11 @@ try {
               <div class="row">
                 <div class="col-md-6 mb-2">
                   <label class="form-label">Foto Formal (jpg/png, max 2MB)</label>
-                  <input type="file" class="form-control" name="foto_formal" accept="image/*">
+                  <input type="file" class="form-control" name="foto_formal" accept="image/*" required>
                 </div>
                 <div class="col-md-6 mb-2">
                   <label class="form-label">Foto Ijazah (jpg/png, max 2MB)</label>
-                  <input type="file" class="form-control" name="foto_ijazah" accept="image/*">
+                  <input type="file" class="form-control" name="foto_ijazah" accept="image/*" required>
                 </div>
               </div>
               <div class="row">
