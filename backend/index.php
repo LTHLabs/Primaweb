@@ -21,7 +21,7 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
   <meta charset="utf-8" />
@@ -39,11 +39,9 @@ try {
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
   <!--====== Line Icons css ======-->
   <link rel="stylesheet" href="assets/css/lineicons.css" />
-  <!--====== Tiny Slider css ======-->
-  <link rel="stylesheet" href="assets/css/tiny-slider.css" />
   <!--====== gLightBox css ======-->
   <link rel="stylesheet" href="assets/css/glightbox.min.css" />
-
+  <!--====== Style css ======-->
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
@@ -498,9 +496,9 @@ try {
             </div>
 
             <div class="light-rounded-buttons">
-              <a href="#facilities" class="btn primary-btn-outline">
+              <!-- <a href="#facilities" class="btn primary-btn-outline">
                 Lihat Fasilitas
-              </a>
+              </a> -->
             </div>
 
             <div class="table-content">
@@ -517,7 +515,6 @@ try {
     </div>
   </section>
   <!-- Akhir Fasilitas Area -->
-
 
 
   <!-- Awal Cta Area -->
@@ -542,7 +539,6 @@ try {
   <!-- Akhir Cta Area -->
 
 
-
   <!-- Start Berita & Kegiatan -->
   <div id="news" class="latest-news-area section">
     <div class="section-title-five">
@@ -565,9 +561,9 @@ try {
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-news">
             <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="/" alt="Kegiatan Praktik" /></a>
+              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan Praktik" /></a>
               <div class="meta-details">
-                <img class="thumb" src="/" alt="Humas" />
+                <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
                 <span>Oleh Humas SMK</span>
               </div>
             </div>
@@ -586,9 +582,9 @@ try {
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-news">
             <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="#" alt="Kegiatan TKJ" /></a>
+              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan TKJ" /></a>
               <div class="meta-details">
-                <img class="thumb" src="#" alt="Humas" />
+                <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
                 <span>Oleh Humas SMK</span>
               </div>
             </div>
@@ -607,9 +603,9 @@ try {
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-news">
             <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="#" alt="Kegiatan DKV" /></a>
+              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan DKV" /></a>
               <div class="meta-details">
-                <img class="thumb" src="#" alt="Humas" />
+                <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
                 <span>Oleh Humas SMK</span>
               </div>
             </div>
@@ -822,13 +818,13 @@ try {
       <div class="row">
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-testimonial">
-            <div class="image">
-              <img src="#" alt="Siswa">
+            <div class="image" style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%;">
+              <img src="assets/images/testimonial/rakabuming.jpeg" alt="Siswa" style="width: 100%; height: auto;">
             </div>
             <div class="content">
               <p>"SMK Prima Bangsa memberikan fondasi yang kuat untuk karir saya di bidang IT. 
                  Pembelajaran praktis dan fasilitas lengkap sangat membantu pengembangan skill."</p>
-              <h4>Ahmad Rizky</h4>
+              <h4>Rakabuming</h4>
               <span>Alumni RPL 2024 - Software Engineer di Tech Corp</span>
             </div>
           </div>
@@ -836,13 +832,13 @@ try {
         
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-testimonial">
-            <div class="image">
-              <img src="#" alt="Siswa">
+            <div class="image"style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%;">
+              <img src="assets/images/testimonial/bahlil.jpg" alt="Siswa" style="width: 100%; height: auto;">
             </div>
             <div class="content">
               <p>"Program TKJ di sini sangat komprehensif. Saya mendapatkan sertifikasi industri 
                  dan langsung diterima kerja setelah lulus."</p>
-              <h4>Siti Nurhaliza</h4>
+              <h4>Lahlil Ethanol</h4>
               <span>Alumni TKJ 2024 - Network Engineer</span>
             </div>
           </div>
@@ -850,13 +846,13 @@ try {
         
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-testimonial">
-            <div class="image">
-              <img src="#" alt="Siswa">
+            <div class="image" style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%;">
+              <img src="assets/images/testimonial/mulyono.jpeg" alt="Siswa" style="width: 100%; height: auto;">
             </div>
             <div class="content">
               <p>"Fasilitas studio DKV yang lengkap dan guru-guru profesional membantu saya 
                  mengembangkan portofolio yang berkualitas."</p>
-              <h4>Budi Santoso</h4>
+              <h4>Mulyono</h4>
               <span>Siswa DKV Kelas XII</span>
             </div>
           </div>
@@ -932,9 +928,9 @@ try {
         $c = $contact_flash['status'] ?? '';
         $msg = isset($contact_flash['msg']) ? htmlspecialchars($contact_flash['msg']) : '';
         if ($c === 'success') {
-          echo '<div class="alert alert-success" role="alert">✅ ' . ($msg ?: 'Pesan berhasil dikirim. Terima kasih.') . '</div>';
+          echo '<div class="alert alert-success" role="alert">' . ($msg ?: 'Pesan berhasil dikirim. Terima kasih.') . '</div>';
         } elseif ($c === 'success_mailfail') {
-          echo '<div class="alert alert-warning" role="alert">⚠️ ' . ($msg ?: 'Pesan tersimpan, namun pengiriman email gagal. Silakan konfigurasi SMTP atau periksa pengaturan server email.') . '</div>';
+          echo '<div class="alert alert-warning" role="alert">' . ($msg ?: 'Pesan tersimpan, namun pengiriman email gagal. Silakan konfigurasi SMTP atau periksa pengaturan server email.') . '</div>';
         } else {
           echo '<div class="alert alert-danger" role="alert">❌ Terjadi kesalahan: ' . $msg . '</div>';
         }
