@@ -1,9 +1,4 @@
-@charset "UTF-8"; /*!
- * Bootstrap v5.0.1 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+@charset "UTF-8"; 
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -12,7 +7,7 @@
   --bs-red: #dc3545;
   --bs-orange: #fd7e14;
   --bs-yellow: #ffc107;
-  --bs-green: #198754;
+  --bs-green: #116c41;
   --bs-teal: #20c997;
   --bs-cyan: #0dcaf0;
   --bs-white: #fff;
@@ -3744,9 +3739,12 @@ fieldset:disabled .btn {
 .navbar-nav {
   display: flex;
   flex-direction: column;
-  padding-left: 0;
-  margin-bottom: 0;
+  /* padding-left: 0;
+  margin-bottom: 0; */
+
   list-style: none;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .navbar-nav .nav-link {
   padding-right: 0;
@@ -3857,7 +3855,9 @@ fieldset:disabled .btn {
     justify-content: flex-start;
   }
   .navbar-expand-lg .navbar-nav {
-    flex-direction: row;
+    /* flex-direction: row; */
+    /* flex-direction: column; */
+    flex-flow: wrap;
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: absolute;

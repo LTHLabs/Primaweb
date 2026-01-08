@@ -4,14 +4,14 @@
 ===========================*/
 :root {
   --font-family: "Inter", sans-serif;
-  --primary: #003366;
-  --primary-dark: #002244;
+  --primary: #198754;
+  --primary-dark: #878b0e;
   --primary-light: #d9e9ff;
   --accent: #00d4d7;
   --accent-dark: #00bac1;
   --accent-light: #dff9f8;
-  --success: #13d527;
-  --success-dark: #00ae11;
+  --success: #198754;
+  --success-dark: #146d45;
   --success-light: #eafbe7;
   --secondary: #8f15d5;
   --secondary-dark: #6013c7;
@@ -19,7 +19,7 @@
   --info: #15b2d5;
   --info-dark: #0f8ca8;
   --info-light: #e0f5fa;
-  --caution: #dbbb25;
+  --caution: #ffc107;
   --caution-dark: #d58f15;
   --caution-light: #fbf9e4;
   --error: #e6185e;
@@ -89,6 +89,11 @@ button:focus {
   text-decoration: none;
   outline: none;
 }
+
+/* #navmenu  {
+  flex-wrap: wrap;
+
+} */
 
 ul,
 ol {
@@ -422,7 +427,7 @@ p {
 
 /*===== NAVBAR NINE =====*/
 .navbar-area.navbar-nine {
-  background: var(--primary);
+  background: var(--primary-dark);
   padding: 10px 0;
   position: absolute;
   left: 0;
@@ -509,7 +514,7 @@ p {
 .navbar-area.navbar-nine .navbar .navbar-nav .nav-item a {
   display: flex;
   align-items: center;
-  padding: 11px 14px;
+  padding: 11px 11px;
   color: var(--white);
   text-transform: capitalize;
   position: relative;
@@ -525,6 +530,8 @@ p {
 }
 .navbar-area.navbar-nine .navbar .navbar-nav .nav-item a:hover {
   opacity: 1;
+  color: var(--caution);
+
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
   .navbar-area.navbar-nine .navbar .navbar-nav .nav-item a {
@@ -734,7 +741,7 @@ p {
   }
 }
 .navbar-area.navbar-nine .navbar .navbar-btn {
-  margin-top: 6px;
+  margin: 11px 2%;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .navbar-area.navbar-nine .navbar .navbar-btn {
@@ -830,7 +837,7 @@ p {
 }
 .sidebar-left .sidebar-content {
   padding: 0px 30px;
-  margin: -23px 1px;
+  margin: -35px 1px;
 }
 .sidebar-left .sidebar-content .sidebar-menu {
   margin-top: 30px;
@@ -1933,4 +1940,69 @@ p {
 .footer-eleven .newsletter-form .sub-btn:hover {
   color: var(--white);
   background-color: var(--primary-dark);
+}
+
+/* Login Admin Styles */
+
+
+    .login-logo {
+      width: 185px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+  
+    .card .left-col-center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    @media (min-width: 992px) {
+      .card .col-lg-6.d-flex.align-items-center.gradient-custom-2 {
+        padding: 2rem;
+      }
+    }
+
+.gradient-custom-2 {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+}
+
+.gradient-custom-2.right-panel {
+  background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("../images/header/MTs_An-Nur_Kota_Cirebon.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--white);
+}
+.gradient-custom-2.right-panel .text-container {
+  color: rgba(255,255,255,0.95);
+}
+.gradient-custom-2.right-panel h4 {
+  color: #ffffff;
+  font-weight: 700;
+}
+.gradient-custom-2.right-panel p {
+  color: rgba(255,255,255,0.9);
+}
+@media (max-width: 991px) {
+  .gradient-custom-2.right-panel {
+    background-image: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
 }

@@ -30,10 +30,10 @@ try {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=" />
 
   <!--====== Title ======-->
-  <title>SMK Prima Bangsa - Sekolah Menengah Kejuruan Berkualitas</title>
+  <title>MTs An-Nur Kota Cirebon</title>
 
   <!--====== Favicon Icon ======-->
-  <link rel="shortcut icon" href="../assets/images/ipb.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="../assets/images/logo.jpg" type="image/x-icon" />
 
   <!--====== Bootstrap css ======-->
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -43,19 +43,20 @@ try {
   <link rel="stylesheet" href="assets/css/glightbox.min.css" />
   <!--====== Style css ======-->
   <link rel="stylesheet" href="assets/css/style.css" />
+
 </head>
 
 <body>
 
   <!--====== NAVBAR AWAL ======-->
 
-  <section class="navbar-area navbar-nine">
+  <section class="navbar-area navbar-nine bg-success">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <nav class="navbar navbar-expand-lg">
+          <nav class="navbar navbar-expand-lg bg-success">
             <a class="navbar-brand" href="#hero-area">
-              <img src="assets/images/ipb.png" alt="Logo" />
+              <img src="assets/images/logo.jpg" alt="Logo" />
 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNine"
@@ -65,9 +66,9 @@ try {
             <span class="toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse sub-menu-bar" id="navbarNine">
-              <ul class="navbar-nav me-auto">
-                <li class="nav-item">
+            <div id="navbarNine" class="collapse navbar-collapse sub-menu-bar ">
+              <ul class="navbar-nav" id="navmenu" style="flex-wrap: wrap;">
+                <li class="nav-item ">
                   <a class="page-scroll active" href="#hero-area">Beranda</a>
                 </li>
                 <li class="nav-item">
@@ -75,7 +76,7 @@ try {
                 </li>
                 <li class="nav-item">
                   <a class="page-scroll" href="#about">Tentang Kami</a>
-                </li>
+                </li>            
                 <li class="nav-item">
                   <a class="page-scroll" href="#facilities">Fasilitas</a>
                 </li>
@@ -92,7 +93,7 @@ try {
                   <?php if (!empty($_SESSION['admin_logged_in'])): ?>
                     <a class="page-scroll" href="admin/pendaftaran.php">Admin</a>
                   <?php else: ?>
-                    <a class="btn btn-outline-info" href="admin/login.php">Admin</a>
+                    <a class="btn btn-outline-warning text-white" href="admin/login.php">Admin</a>
                   <?php endif; ?>
                 </li>
               </ul>
@@ -117,9 +118,9 @@ try {
     </div>
       <div class="sidebar-content">
       <div class="sidebar-logo">
-        <a href="index.html"><img src="assets/images/ipb.png" alt="Logo SMK Prima Bangsa" /></a>
+        <a href="index.html"><img src="assets/images/logo.jpg" alt="Logo MTs An-Nur Kota Cirebon" /></a>
       </div>
-      <p class="text">SMK Prima Bangsa — sekolah vokasi yang mempersiapkan siswa menjadi tenaga kerja terampil dan berkarakter.</p>
+      <p class="text">MTs An-Nur Kota Cirebon — merupakan lembaga pendidikan Islam yang berkomitmen mencetak generasi beriman, berilmu, dan berakhlakul karimah.</p>
       <div class="sidebar-menu">
         <h5 class="menu-title">Tautan Cepat</h5>
         <ul>
@@ -155,17 +156,17 @@ try {
       <div class="row align-items-center">
         <div class="col-lg-6 col-md-12 col-12">
           <div class="header-content">
-            <h1>Selamat Datang di SMK Prima Bangsa</h1>
+            <h1>Selamat Datang di MTs An-Nur Kota Cirebon</h1>
             <p>
               Sekolah Menengah Kejuruan yang membentuk generasi unggul, kreatif, dan siap kerja 
               di bidang teknologi dan industri.
             </p>
             <div class="button">
-              <a href="#pendaftaran-form" class="btn primary-btn">Daftar Sekarang</a>
+              <a href="#pendaftaran-form" class="btn btn-outline-warning">Daftar Sekarang</a>
               <a href="https://www.youtube.com/watch?v=-rRAuQzVq4s"
                 class="glightbox video-button">
-                <span class="btn icon-btn rounded-full">
-                  <i class="lni lni-play"></i>
+                <span class="btn btn-light rounded-full btn-outline-warning">
+                  <i class="lni lni-play text-dark"></i>
                 </span>
                 <span class="text">Profil Sekolah</span>
               </a>
@@ -173,8 +174,8 @@ try {
           </div>
         </div>
         <div class="col-lg-6 col-md-12 col-12">
-            <div class="header-image">
-            <img src="assets/images/header/hero-image.webp" alt="Foto Utama SMK Prima Bangsa" />
+            <div class="header-image py-1 px-3">
+            <img src="assets/images/header/MTs_An-Nur_Kota_Cirebon.jpg" alt="Foto Utama MTs An-Nur Kota Cirebon" />
              <!-- <iframe style="max-width:100%; border-radius:3%;" src="https://wordwall.net/embed/cf933df504bf4641a9dd3d66d11a7be6?themeId=54&templateId=3&fontStackId=12" width="100%" height="380" frameborder="0" allowfullscreen></iframe> -->
           </div>
         </div>
@@ -273,42 +274,36 @@ try {
               <circle cx="60.333" cy="132" r="1.66667" fill="#DADADA" />
               <circle cx="104" cy="132" r="1.66667" fill="#DADADA" />
             </svg>
-            <img src="assets/images/about/about-image.webp" alt="Tentang Kami" />
+            <img src="assets/images/about/MTs_An-Nur_Kota_Cirebon-about.jpg" alt="Tentang Kami" />
           </div>
         </div>
         <div class="col-lg-6 col-12">
           <div class="about-five-content">
             <h6 class="small-title text-lg">TENTANG KAMI</h6>
-            <h2 class="main-title fw-bold">SMK Prima Bangsa — Visi, Misi, dan Komitmen Pendidikan</h2>
+            <h2 class="main-title fw-bold">MTs An-Nur Kota Cirebon — Visi, Misi, dan Komitmen Pendidikan</h2>
             <div class="about-five-tab">
               <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                  <button class="nav-link active" id="nav-who-tab" data-bs-toggle="tab" data-bs-target="#nav-who"
+                  <button class="nav-link active btn btn-warning bg-success text-white" id="nav-who-tab" data-bs-toggle="tab" data-bs-target="#nav-who"
                     type="button" role="tab" aria-controls="nav-who" aria-selected="true">Siapa Kami</button>
-                  <button class="nav-link" id="nav-vision-tab" data-bs-toggle="tab" data-bs-target="#nav-vision"
+                  <button class="nav-link btn btn-warning bg-success text-white" id="nav-vision-tab" data-bs-toggle="tab" data-bs-target="#nav-vision"
                     type="button" role="tab" aria-controls="nav-vision" aria-selected="false">Visi Kami</button>
-                  <button class="nav-link" id="nav-history-tab" data-bs-toggle="tab" data-bs-target="#nav-history"
+                  <button class="nav-link btn btn-warning bg-success text-white" id="nav-history-tab" data-bs-toggle="tab" data-bs-target="#nav-history"
                     type="button" role="tab" aria-controls="nav-history" aria-selected="false">Sejarah Singkat</button>
                 </div>
               </nav>
               <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-who" role="tabpanel" aria-labelledby="nav-who-tab">
-                  <p>SMK Prima Bangsa adalah lembaga pendidikan kejuruan yang berfokus pada pengembangan kompetensi
-                    vokasional di bidang teknologi, jaringan, dan desain. Kami mengedepankan pembelajaran praktik
-                    yang terintegrasi dengan industri untuk menghasilkan lulusan siap kerja.</p>
-                  <p>Kami didukung oleh tenaga pengajar berpengalaman, fasilitas modern, serta kurikulum yang mengikuti
-                    kebutuhan pasar kerja.</p>
+                  <p>Madrasah Tsanawiyah (MTs) An-Nur Cirebon merupakan lembaga pendidikan Islam yang berkomitmen mencetak generasi beriman, berilmu, dan berakhlakul karimah.
+                    Kami didukung oleh tenaga pengajar berpengalaman, fasilitas modern, serta kurikulum yang adaptif</p>
                 </div>
                 <div class="tab-pane fade" id="nav-vision" role="tabpanel" aria-labelledby="nav-vision-tab">
-                  <p>Menjadi lembaga pendidikan vokasi unggulan yang menghasilkan tenaga kerja profesional,
-                    kreatif, dan berdaya saing global pada bidang teknologi dan industri.</p>
-                  <p>Misi kami meliputi peningkatan kualitas pembelajaran, kerjasama industri, dan penguatan karakter siswa.</p>
+                 <p>Visi MTs An-Nur Sebagai wahana pembinaan manusia yang bertaqwa dan beriman, berbias pada keshalehan sosial.</p>
+ <p>Misi kami meliputi: Mendorong terciptanya suasana madrasah yang Islami, memotivasi terciptanya iklim kompetisi yang sehat, membangun terciptanya suasana keterbukaan yang profesional dalam suasana kekeluargaan, membentuk siswa terampil, kehandalan bersaing dan berdayaguna yang Berakhlaq Karimah, dan MTs An-Nur sebagai madrasah yang menjadi milik dan dambaan masyarakat.</p>
                 </div>
                 <div class="tab-pane fade" id="nav-history" role="tabpanel" aria-labelledby="nav-history-tab">
-                  <p>Sejak berdiri, SMK Prima Bangsa terus berkembang dengan memperkuat program keahlian dan
-                    membangun kemitraan dengan dunia industri untuk mendukung program praktik kerja industri (PKL)</p>
-                  <p>Kami berkomitmen untuk terus meningkatkan mutu pendidikan dan layanan kepada siswa dan masyarakat.</p>
-                </div>
+                 <p>MTs An-Nur ini berada di bawah naungan Yayasan Pendidikan dan Dakwah Islam Jagasatru (YPDIJ) didirikan pada tanggal 06 Agustus 1983 oleh 33 orang pemarkasa, yang terdiri dari tokoh masyarakat dan aparat pemerintah, dan didukung oleh masyarakat setempat. Pada Awalnya yakni tahun pelajaran 1993/1994 siswa MTs An-Nur hanya terdiri 1 kelas dan berjumlah 49 siswa. kemudian dari tahun ketahun terus bertambah hingga 6 kelas sampai sekarang.</p>
+ <p>MTs Annur Cirebon terus berupaya mengikuti perkembangan zaman dengan mengintegrasikan teknologi dalam proses pembelajaran tanpa meninggalkan nilai-nilai Islam yang menjadi landasan utama pendidikan.</p>
               </div>
             </div>
           </div>
@@ -319,36 +314,39 @@ try {
 
   <!--====== ABOUT AKHIR ======-->
 
+  <!-- Awal Ekstrakurikuler -->
+
   <section id="services" class="services-area services-eight">
     <div class="section-title-five">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="content">
-              <h6>Program Keahlian</h6>
-              <h2 class="fw-bold">Jurusan di SMK Prima Bangsa</h2>
+              <h6 class="text-lg btn-success text-white">Ekstrakurikuler di MTs An-Nur</h6>
+
+              <!-- <h2 class="fw-bold">Jurusan di MTs AN-NUR</h2> -->
               <p>
-                SMK Prima Bangsa menyediakan program keahlian unggulan yang dirancang 
-                untuk mempersiapkan siswa menghadapi era digital dan industri 4.0
+                MTs An-Nur menyediakan beragam kegiatan ekstrakurikuler yang bersifat edukatif, kreatif, dan religius, seperti bidang keagamaan, olahraga, seni, dan keterampilan. Setiap kegiatan dibimbing oleh pembina yang kompeten sehingga mampu menjadi wadah pembentukan karakter, pengembangan prestasi, serta penyaluran bakat peserta didik secara positif
               </p>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
 
+
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <div class="single-services">
             <div class="service-icon">
-              <i class="lni lni-code"></i>
+              <i class="lni lni-basketball"></i>
             </div>
             <div class="service-content">
-              <h4>Rekayasa Perangkat Lunak (RPL)</h4>
+              <h4>Futsal</h4>
               <p>
-                Program keahlian yang fokus pada pengembangan software, pemrograman web,
-                mobile apps, dan database. Lulusan siap menjadi developer profesional.
+                Ekstrakurikuler olahraga yang bertujuan meningkatkan kebugaran jasmani, sportivitas, kerja sama tim, serta prestasi peserta didik di bidang olahraga
               </p>
             </div>
           </div>
@@ -356,13 +354,12 @@ try {
         <div class="col-lg-4 col-md-6">
           <div class="single-services">
             <div class="service-icon">
-              <i class="lni lni-network"></i>
+              <i class="lni lni-flag"></i>
             </div>
             <div class="service-content">
-              <h4>Teknik Komputer dan Jaringan (TKJ)</h4>
+              <h4>Pramuka</h4>
               <p>
-                Program keahlian yang mempelajari perakitan komputer, jaringan,
-                keamanan sistem, dan infrastruktur IT modern.
+                Kegiatan yang bertujuan membentuk karakter disiplin, mandiri, bertanggung jawab, serta menanamkan jiwa kepemimpinan dan kebersamaan pada peserta didik.
               </p>
             </div>
           </div>
@@ -370,13 +367,12 @@ try {
         <div class="col-lg-4 col-md-6">
           <div class="single-services">
             <div class="service-icon">
-              <i class="lni lni-pencil-alt"></i>
+              <i class="lni lni-world"></i>
             </div>
             <div class="service-content">
-              <h4>Desain Komunikasi Visual (DKV)</h4>
+              <h4>Club Bahasa Inggris</h4>
               <p>
-                Program keahlian yang mengembangkan kreativitas dalam desain grafis,
-                multimedia, animasi dan produksi konten digital.
+                Kegiatan yang berfokus pada pengembangan kemampuan berbahasa Inggris, baik lisan maupun tulisan, melalui pembelajaran interaktif, diskusi, dan praktik komunikasi sehari-hari.
               </p>
             </div>
           </div>
@@ -384,13 +380,12 @@ try {
         <div class="col-lg-4 col-md-6">
           <div class="single-services">
             <div class="service-icon">
-              <i class="lni lni-briefcase"></i>
+              <i class="lni lni-book"></i>
             </div>
             <div class="service-content">
-              <h4>Praktek Kerja Industri (PKL)</h4>
+              <h4>Baca Tulis Al-Qur`an</h4>
               <p>
-                Kerjasama dengan perusahaan mitra untuk memberikan pengalaman praktik nyata
-                bagi siswa sesuai kompetensi keahlian.
+                Ekstrakurikuler yang difokuskan pada peningkatan kemampuan membaca dan menulis Al-Qur’an sesuai kaidah tajwid serta pembinaan akhlak Islami.
               </p>
             </div>
           </div>
@@ -398,13 +393,12 @@ try {
         <div class="col-lg-4 col-md-6">
           <div class="single-services">
             <div class="service-icon">
-              <i class="lni lni-star"></i>
+              <i class="lni lni-microscope"></i>
             </div>
             <div class="service-content">
-              <h4>Ekstrakurikuler</h4>
+              <h4>Club IPA</h4>
               <p>
-                Berbagai kegiatan ekstrakurikuler untuk mengembangkan soft-skill, kepemimpinan,
-                dan kreatifitas siswa di luar jam pelajaran.
+                Wadah bagi peserta didik yang memiliki minat dalam bidang sains untuk mengembangkan kemampuan berpikir kritis, eksperimen, dan persiapan mengikuti kompetisi akademik.
               </p>
             </div>
           </div>
@@ -412,13 +406,14 @@ try {
         <div class="col-lg-4 col-md-6">
           <div class="single-services">
             <div class="service-icon">
-              <i class="lni lni-handshake"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C9.79 2 8 3.79 8 6c0 2.21 4 5 4 5s4-2.79 4-5c0-2.21-1.79-4-4-4zm-7 8c-1.1 0-2 .9-2 2v5h18v-5c0-1.1-.9-2-2-2H5zM7 18v2h10v-2H7z"/>
+              </svg>
             </div>
             <div class="service-content">
-              <h4>Pembinaan Karir & Alumni</h4>
+              <h4>Hadroh</h4>
               <p>
-                Layanan bimbingan karir, pelatihan persiapan kerja, dan jejaring alumni untuk
-                mendukung penempatan lulusan.
+                Kegiatan seni islami yang mengembangkan bakat peserta didik dalam bidang musik religi, sekaligus menumbuhkan kecintaan terhadap shalawat dan budaya Islam.
               </p>
             </div>
           </div>
@@ -426,6 +421,7 @@ try {
       </div>
     </div>
   </section>
+  <!-- Akhir Ekstrakurikuler -->
 
 
   <!-- Awal Fasilitas Area -->
@@ -436,10 +432,9 @@ try {
           <div class="col-12">
             <div class="content">
               <h6>Fasilitas</h6>
-              <h2 class="fw-bold">Fasilitas Sekolah</h2>
+              <h2 class="fw-bold">Fasilitas Madrasah</h2>
               <p>
-                SMK Prima Bangsa dilengkapi dengan berbagai fasilitas modern untuk
-                mendukung proses belajar mengajar yang optimal.
+                MTs An-Nur dilengkapi dengan berbagai fasilitas modern untuk mendukung proses belajar mengajar yang optimal dan kenyamanan siswa, antara lain:
               </p>
             </div>
           </div>
@@ -996,7 +991,7 @@ try {
               <div class="footer-widget f-about">
                 <div class="logo">
                   <a href="index.html">
-                    <img src="assets/images/ipb.png" alt="#" class="img-fluid" />
+                    <img src="assets/images/logo.jpg" alt="#" class="img-fluid" />
                   </a>
                 </div>
                 <p>
@@ -1004,10 +999,10 @@ try {
                   tantangan global.
                 </p>
                 <p class="copyright-text">
-                  <span>© 2025 SMK Prima Bangsa</span>
+                  <span>© 2026 MTs An-Nur Kota Cirebon</span>
                   <br>Cideng, Jl. Brigjend Dharsono Bypass No.20, Kertawinangun, Kec. Kedawung, Kabupaten Cirebon<br>
                   Telp: (021) 1234-5678<br>
-                  Email: info@smkprimabangsa.sch.id
+                  Email: info@mtsan-nurcirebon.sch.id
                 </p>
               </div>
             </div>
@@ -1037,10 +1032,10 @@ try {
               <div class="footer-widget social-links">
                 <h5>Media Sosial</h5>
                 <p>Ikuti kami di media sosial untuk informasi terbaru</p>
-                <div class="social-icons">
-                  <a href="https://facebook.com/smkprimabangsa" target="_blank"><i class="lni lni-facebook-filled"></i></a>
-                  <a href="https://instagram.com/smkprimabangsa" target="_blank"><i class="lni lni-instagram-original"></i></a>
-                  <a href="https://youtube.com/smkprimabangsa" target="_blank"><i class="lni lni-youtube"></i></a>
+                <div class="social-icons text-dark py-3">
+                  <a href="https://facebook.com/smkprimabangsa" target="_blank" class="text-dark lni lni-facebook-filled"> Facebook</a> |
+                  <a href="https://instagram.com/smkprimabangsa" target="_blank" class="text-dark lni lni-instagram-original"> Instagram</a> |
+                  <a href="https://youtube.com/smkprimabangsa" target="_blank" class="text-dark lni lni-youtube"> YouTube</a>
                 </div>
               </div>
             </div>
