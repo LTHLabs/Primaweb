@@ -43,6 +43,13 @@ if ($nama_lengkap === '') $errors[] = 'Nama lengkap wajib diisi.';
 if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Email tidak valid.';
 if ($no_hp === '' || !preg_match('/^[0-9+\-\s]{6,15}$/', $no_hp)) $errors[] = 'Nomor HP tidak valid.';
 
+// Validasi tanggal lahir (jika diisi)
+if (!empty($tanggal_lahir)) {
+    $d = DateTime::createFromFormat('Y-m-d', $tanggal_lahir);
+    $validDate = $d && $d->format('Y-m-d') === $tanggal_lahir;
+    if (! $validDate) $errors[] = 'Format Tanggal Lahir tidak valid. Gunakan YYYY-MM-DD.';
+}
+
 // Handle uploads
 $upload_dir = __DIR__ . '/../uploads/pendaftaran/';
 @mkdir($upload_dir, 0755, true);
@@ -85,7 +92,7 @@ try {
     $mysqli = db_connect();
     $stmt = $mysqli->prepare("INSERT INTO pendaftaran_siswa 
         (nisn, nama_lengkap, tempat_lahir, tanggal_lahir, jenis_kelamin, alamat, asal_sekolah, no_hp, email, token, token_expired, program_keahlian, foto_formal, foto_ijazah)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        VALUES (?, ?, ?, NULLIF(?, ''), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     if (!$stmt) throw new Exception('Prepare failed: ' . $mysqli->error);
     $stmt->bind_param('ssssssssssssss', $nisn, $nama_lengkap, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $alamat, $asal_sekolah, $no_hp, $email, $token, $token_expired, $program_keahlian, $foto_formal_path, $foto_ijazah_path);
     if (!$stmt->execute()) throw new Exception('Execute failed: ' . $stmt->error);

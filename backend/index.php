@@ -162,13 +162,13 @@ try {
               di bidang teknologi dan industri.
             </p>
             <div class="button">
-              <a href="#pendaftaran-form" class="btn btn-outline-warning">Daftar Sekarang</a>
+              <a href="viewform.php" class="btn btn-outline-warning">Daftar Sekarang</a>
               <a href="https://www.youtube.com/watch?v=-rRAuQzVq4s"
                 class="glightbox video-button">
                 <span class="btn btn-light rounded-full btn-outline-warning">
                   <i class="lni lni-play text-dark"></i>
                 </span>
-                <span class="text">Profil Sekolah</span>
+                <span class="text">Profil Sekolah MTs</span>
               </a>
             </div>
           </div>
@@ -176,7 +176,6 @@ try {
         <div class="col-lg-6 col-md-12 col-12">
             <div class="header-image py-1 px-3">
             <img src="assets/images/header/MTs_An-Nur_Kota_Cirebon.jpg" alt="Foto Utama MTs An-Nur Kota Cirebon" />
-             <!-- <iframe style="max-width:100%; border-radius:3%;" src="https://wordwall.net/embed/cf933df504bf4641a9dd3d66d11a7be6?themeId=54&templateId=3&fontStackId=12" width="100%" height="380" frameborder="0" allowfullscreen></iframe> -->
           </div>
         </div>
       </div>
@@ -324,7 +323,6 @@ try {
             <div class="content">
               <h6 class="text-lg btn-success text-white">Ekstrakurikuler di MTs An-Nur</h6>
 
-              <!-- <h2 class="fw-bold">Jurusan di MTs AN-NUR</h2> -->
               <p>
                 MTs An-Nur menyediakan beragam kegiatan ekstrakurikuler yang bersifat edukatif, kreatif, dan religius, seperti bidang keagamaan, olahraga, seni, dan keterampilan. Setiap kegiatan dibimbing oleh pembina yang kompeten sehingga mampu menjadi wadah pembentukan karakter, pengembangan prestasi, serta penyaluran bakat peserta didik secara positif
               </p>
@@ -517,14 +515,14 @@ try {
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9">
-          <div class="inner-content">
-            <h2>SMK Prima Bangsa Siap Mendampingi Sukses Karir Anda</h2>
+          <div class="inner-content text-center">
+            <h2>MTs AN-NUR Siap Mendampingi Sukses Karir Anda</h2>
             <p>
-              Bergabunglah bersama kami untuk mendapatkan pendidikan vokasi berkualitas, praktik industri, 
+              Bergabunglah bersama kami untuk mendapatkan pendidikan vokasi berkualitas, praktik industri,
               dan pembinaan karir yang terarah untuk masa depan siswa.
             </p>
             <div class="light-rounded-buttons">
-              <a href="https://pmb.ipbcirebon.ac.id/" class="btn primary-btn-outline">Daftar Sekarang</a>
+              <a href="viewform.php" class="btn primary-btn-outline">Daftar Sekarang</a>
             </div>
           </div>
         </div>
@@ -532,6 +530,93 @@ try {
     </div>
   </section>
   <!-- Akhir Cta Area -->
+
+  <!-- Awal Indikator Jumlah Pendaftar -->
+  <?php
+  $total_pendaftar = is_array($pendaftar_rows) ? count($pendaftar_rows) : 0;
+  $program_counts = [];
+  if (!empty($pendaftar_rows) && is_array($pendaftar_rows)) {
+    $program_counts = array_count_values(array_map(function($r){ return $r['program_keahlian'] ?? ''; }, $pendaftar_rows));
+  }
+  $rpl_count = $program_counts['Rekayasa Perangkat Lunak (RPL)'] ?? 0;
+  $tkj_count = $program_counts['Teknik Komputer Jaringan (TKJ)'] ?? 0;
+  $dkv_count = $program_counts['Desain Komunikasi Visual (DKV)'] ?? 0;
+  $p_rpl = $total_pendaftar ? round($rpl_count * 100 / $total_pendaftar) : 0;
+  $p_tkj = $total_pendaftar ? round($tkj_count * 100 / $total_pendaftar) : 0;
+  $p_dkv = $total_pendaftar ? round($dkv_count * 100 / $total_pendaftar) : 0;
+  $last_update = '';
+  if ($total_pendaftar > 0) {
+    $dates = array_filter(array_column($pendaftar_rows, 'tanggal_daftar'));
+    if (!empty($dates)) {
+      $last_update = date('d M Y, H:i', strtotime(max($dates)));
+    }
+  }
+  ?>
+  <section id="indikator-pendaftar" class="statistics-area py-5">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+              <div class="mb-3">
+                <i class="lni lni-users" style="font-size:36px;color:#198754;"></i>
+              </div>
+              <h5 class="card-title">Total Pendaftar</h5>
+              <h2 class="fw-bold display-5 text-success"><?= $total_pendaftar; ?></h2>
+              <?php if ($last_update): ?>
+                <p class="text-muted mb-0">Terakhir diperbarui: <?= htmlspecialchars($last_update); ?></p>
+              <?php else: ?>
+                <p class="text-muted mb-0">Belum ada pendaftar</p>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="card-title mb-3">Distribusi Program Keahlian</h5>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                  <div><strong>Rekayasa Perangkat Lunak (RPL)</strong></div>
+                  <div class="text-muted"><?= $rpl_count; ?> siswa <small class="text-muted"> (<?= $p_rpl; ?>%)</small></div>
+                </div>
+                <div class="progress" style="height:10px;">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: <?= $p_rpl; ?>%;" aria-valuenow="<?= $p_rpl; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                  <div><strong>Teknik Komputer Jaringan (TKJ)</strong></div>
+                  <div class="text-muted"><?= $tkj_count; ?> siswa <small class="text-muted"> (<?= $p_tkj; ?>%)</small></div>
+                </div>
+                <div class="progress" style="height:10px;">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: <?= $p_tkj; ?>%;" aria-valuenow="<?= $p_tkj; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="mb-2">
+                <div class="d-flex justify-content-between">
+                  <div><strong>Desain Komunikasi Visual (DKV)</strong></div>
+                  <div class="text-muted"><?= $dkv_count; ?> siswa <small class="text-muted"> (<?= $p_dkv; ?>%)</small></div>
+                </div>
+                <div class="progress" style="height:10px;">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: <?= $p_dkv; ?>%;" aria-valuenow="<?= $p_dkv; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+
+              <div class="mt-4 text-end">
+                <a href="#daftar-pendaftar" class="btn btn-outline-success">Lihat Rincian</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Akhir Indikator Jumlah Pendaftar -->
 
 
   <!-- Start Berita & Kegiatan -->
@@ -559,7 +644,7 @@ try {
               <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan Praktik" /></a>
               <div class="meta-details">
                 <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
-                <span>Oleh Humas SMK</span>
+                <span>Oleh Humas Mts</span>
               </div>
             </div>
             <div class="content-body">
@@ -580,7 +665,7 @@ try {
               <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan TKJ" /></a>
               <div class="meta-details">
                 <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
-                <span>Oleh Humas SMK</span>
+                <span>Oleh Humas Mts</span>
               </div>
             </div>
             <div class="content-body">
@@ -601,7 +686,7 @@ try {
               <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan DKV" /></a>
               <div class="meta-details">
                 <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
-                <span>Oleh Humas SMK</span>
+                <span>Oleh Humas Mts</span>
               </div>
             </div>
             <div class="content-body">
@@ -635,7 +720,7 @@ try {
         </div>
       </div>
       <!-- Pendaftaran Form -->
-      <div id="pendaftaran-form" class="row mb-4">
+      <!-- <div id="pendaftaran-form" class="row mb-4">
         <div class="col-12">
           <div class="card p-3">
             <h5>Form Pendaftaran Siswa Baru</h5>
@@ -691,7 +776,7 @@ try {
             </form>
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col-12">
           <div class="table-responsive">
@@ -703,16 +788,11 @@ try {
               <table class="table table-striped table-bordered">
                 <thead class="table-dark">
                   <tr>
-                    <th>#</th>
+                    <th>NO</th>
                     <th>NISN</th>
                     <th>Nama Lengkap</th>
                     <th>TTL</th>
                     <th>JK</th>
-                    <th>No. HP</th>
-                    <th>Program Keahlian</th>
-                    <th>Asal Sekolah</th>
-                    <th>Email</th>
-                    <th>File Foto / Ijazah</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -725,18 +805,6 @@ try {
                         <?= htmlspecialchars(($row['tempat_lahir'] ?? '') . ' / ' . ($row['tanggal_lahir'] ?? '')); ?>
                       </td>
                       <td><?= htmlspecialchars($row['jenis_kelamin'] ?? ''); ?></td>
-                      <td><?= htmlspecialchars($row['no_hp'] ?? ''); ?></td>
-                      <td><?= htmlspecialchars($row['program_keahlian'] ?? ''); ?></td>
-                      <td><?= htmlspecialchars($row['asal_sekolah'] ?? ''); ?></td>
-                      <td><?= htmlspecialchars($row['email'] ?? ''); ?></td>
-                      <td>
-                        <?php if (!empty($row['foto_formal'])): ?>
-                          <a href="<?= htmlspecialchars($row['foto_formal']); ?>" target="_blank">Foto</a>
-                        <?php endif; ?>
-                        <?php if (!empty($row['foto_ijazah'])): ?>
-                          &nbsp;|&nbsp; <a href="<?= htmlspecialchars($row['foto_ijazah']); ?>" target="_blank">Ijazah</a>
-                        <?php endif; ?>
-                      </td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>
@@ -872,7 +940,7 @@ try {
                   <div class="contact-content">
                     <h4>Kontak</h4>
                     <p>Telp: (021) 1234-5678</p>
-                    <p>Email: info@smkprimabangsa.sch.id</p>
+                    <p>Email: info@mtsan-nurcirebon.sch.id</p>
                   </div>
                 </div>
               </div>

@@ -4,12 +4,12 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
 function redirect_with_flash($status, $msg = '') {
     $_SESSION['contact_flash'] = ['status' => $status, 'msg' => $msg];
-    header('Location: ../admin/pendaftaran.php');
+    header('Location: ../admin/tabelForm.php');
     exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../admin/pendaftaran.php');
+    header('Location: ../admin/tabelForm.php');
     exit;
 }
 
@@ -29,6 +29,13 @@ $program_keahlian = isset($_POST['program_keahlian']) ? trim($_POST['program_kea
 
 if ($nisn === '' || $nama_lengkap === '' || $email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     redirect_with_flash('error', 'Validasi gagal: NISN/Nama/Email wajib dan harus valid.');
+}
+
+// Validasi tanggal lahir (jika diisi)
+if (!empty($tanggal_lahir)) {
+    $d = DateTime::createFromFormat('Y-m-d', $tanggal_lahir);
+    $validDate = $d && $d->format('Y-m-d') === $tanggal_lahir;
+    if (! $validDate) redirect_with_flash('error', 'Format Tanggal Lahir tidak valid. Gunakan YYYY-MM-DD.');
 }
 
 $upload_dir = __DIR__ . '/../uploads/pendaftaran/';
@@ -54,10 +61,10 @@ function handle_update_file($field, $upload_dir, $allowed_types, $max_size, $exi
     return $existing;
 }
 
-// fetch existing to know file paths
+// fetch existing to know file paths and dokumen JSON
 try {
     $mysqli = db_connect();
-    $sel = $mysqli->prepare('SELECT foto_formal, foto_ijazah FROM pendaftaran_siswa WHERE id_pendaftaran = ?');
+    $sel = $mysqli->prepare('SELECT foto_formal, foto_ijazah, akte_files, kk_files, ktp_ortu_files, ijazah_files, skhun_files, nisn_files, kip_files, proses_seleksi FROM pendaftaran_siswa WHERE id_pendaftaran = ?');
     $sel->bind_param('i', $id);
     $sel->execute();
     $res = $sel->get_result();
@@ -70,9 +77,109 @@ try {
 $foto_formal_path = handle_update_file('foto_formal', $upload_dir, $allowed_types, $max_size, $row['foto_formal']);
 $foto_ijazah_path = handle_update_file('foto_ijazah', $upload_dir, $allowed_types, $max_size, $row['foto_ijazah']);
 
+// decode existing dokumen lists
+$existing_akte = !empty($row['akte_files']) ? json_decode($row['akte_files'], true) : [];
+$existing_kk = !empty($row['kk_files']) ? json_decode($row['kk_files'], true) : [];
+$existing_ktp = !empty($row['ktp_ortu_files']) ? json_decode($row['ktp_ortu_files'], true) : [];
+$existing_ijazah = !empty($row['ijazah_files']) ? json_decode($row['ijazah_files'], true) : [];
+$existing_skhun = !empty($row['skhun_files']) ? json_decode($row['skhun_files'], true) : [];
+$existing_nisn = !empty($row['nisn_files']) ? json_decode($row['nisn_files'], true) : [];
+$existing_kip = !empty($row['kip_files']) ? json_decode($row['kip_files'], true) : [];
+
+// process removals from admin
+$remove_akte = $_POST['remove_akte_files'] ?? $_POST['remove_akte'] ?? [];
+$remove_kk = $_POST['remove_kk_files'] ?? $_POST['remove_kk'] ?? [];
+$remove_ktp = $_POST['remove_ktp_ortu_files'] ?? $_POST['remove_ktp'] ?? [];
+$remove_ijazah = $_POST['remove_ijazah_files'] ?? $_POST['remove_ijazah'] ?? [];
+$remove_skhun = $_POST['remove_skhun_files'] ?? $_POST['remove_skhun'] ?? [];
+$remove_nisn = $_POST['remove_nisn_files'] ?? $_POST['remove_nisn'] ?? [];
+$remove_kip = $_POST['remove_kip_files'] ?? $_POST['remove_kip'] ?? [];
+
+// filter existing arrays
+$existing_akte = array_values(array_filter($existing_akte, function($v) use ($remove_akte){ return !in_array($v, (array)$remove_akte); }));
+$existing_kk = array_values(array_filter($existing_kk, function($v) use ($remove_kk){ return !in_array($v, (array)$remove_kk); }));
+$existing_ktp = array_values(array_filter($existing_ktp, function($v) use ($remove_ktp){ return !in_array($v, (array)$remove_ktp); }));
+$existing_ijazah = array_values(array_filter($existing_ijazah, function($v) use ($remove_ijazah){ return !in_array($v, (array)$remove_ijazah); }));
+$existing_skhun = array_values(array_filter($existing_skhun, function($v) use ($remove_skhun){ return !in_array($v, (array)$remove_skhun); }));
+$existing_nisn = array_values(array_filter($existing_nisn, function($v) use ($remove_nisn){ return !in_array($v, (array)$remove_nisn); }));
+$existing_kip = array_values(array_filter($existing_kip, function($v) use ($remove_kip){ return !in_array($v, (array)$remove_kip); }));
+
+// helper upload multiple
+$uploadMultiple = function($fieldName, $prefix) use ($upload_dir) {
+    $ret = [];
+    if (empty($_FILES[$fieldName])) return $ret;
+    if (!is_array($_FILES[$fieldName]['name'])) {
+        if ($_FILES[$fieldName]['error'] === UPLOAD_ERR_OK) {
+            $ext = pathinfo($_FILES[$fieldName]['name'], PATHINFO_EXTENSION);
+            $safe = time() . '_' . uniqid($prefix . '_') . '.' . $ext;
+            $dest = $upload_dir . $safe;
+            if (move_uploaded_file($_FILES[$fieldName]['tmp_name'], $dest)) $ret[] = 'uploads/pendaftaran/' . $safe;
+        }
+        return $ret;
+    }
+    $count = count($_FILES[$fieldName]['name']);
+    for ($i=0;$i<$count;$i++){
+        if ($_FILES[$fieldName]['error'][$i] !== UPLOAD_ERR_OK) continue;
+        $ext = pathinfo($_FILES[$fieldName]['name'][$i], PATHINFO_EXTENSION);
+        $safe = time() . '_' . uniqid($prefix . '_') . '.' . $ext;
+        $dest = $upload_dir . $safe;
+        if (move_uploaded_file($_FILES[$fieldName]['tmp_name'][$i], $dest)) $ret[] = 'uploads/pendaftaran/' . $safe;
+    }
+    return $ret;
+};
+
+// append newly uploaded files (and cap to 3)
+$new_akte = $uploadMultiple('akte_files', 'akte');
+$existing_akte = array_slice(array_merge($existing_akte, $new_akte), 0, 3);
+$new_kk = $uploadMultiple('kk_files', 'kk');
+$existing_kk = array_slice(array_merge($existing_kk, $new_kk), 0, 3);
+$new_ktp = $uploadMultiple('ktp_ortu_files', 'ktp_ortu');
+$existing_ktp = array_slice(array_merge($existing_ktp, $new_ktp), 0, 3);
+$new_ijazah = $uploadMultiple('ijazah_files', 'ijazah');
+$existing_ijazah = array_slice(array_merge($existing_ijazah, $new_ijazah), 0, 3);
+$new_skhun = $uploadMultiple('skhun_files', 'skhun');
+$existing_skhun = array_slice(array_merge($existing_skhun, $new_skhun), 0, 3);
+$new_nisn = $uploadMultiple('nisn_files', 'nisn');
+$existing_nisn = array_slice(array_merge($existing_nisn, $new_nisn), 0, 3);
+$new_kip = $uploadMultiple('kip_files', 'kip');
+$existing_kip = array_slice(array_merge($existing_kip, $new_kip), 0, 3);
+
 try {
-    $stmt = $mysqli->prepare('UPDATE pendaftaran_siswa SET nisn=?, nama_lengkap=?, tempat_lahir=?, tanggal_lahir=?, jenis_kelamin=?, alamat=?, asal_sekolah=?, no_hp=?, email=?, program_keahlian=?, foto_formal=?, foto_ijazah=? WHERE id_pendaftaran = ?');
-    $stmt->bind_param('ssssssssssssi', $nisn, $nama_lengkap, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $alamat, $asal_sekolah, $no_hp, $email, $program_keahlian, $foto_formal_path, $foto_ijazah_path, $id);
+    $stmt = $mysqli->prepare('UPDATE pendaftaran_siswa SET nisn=?, nama_lengkap=?, tempat_lahir=?, tanggal_lahir=NULLIF(?, \'\'), jenis_kelamin=?, alamat=?, asal_sekolah=?, no_hp=?, email=?, program_keahlian=?, foto_formal=?, foto_ijazah=?, akte_files=?, kk_files=?, ktp_ortu_files=?, ijazah_files=?, skhun_files=?, nisn_files=?, kip_files=?, proses_seleksi=? WHERE id_pendaftaran = ?');
+    // prepare JSON strings and process_seleksi as variables (bind_param requires variables passed by reference)
+    $json_akte = json_encode($existing_akte);
+    $json_kk = json_encode($existing_kk);
+    $json_ktp = json_encode($existing_ktp);
+    $json_ijazah = json_encode($existing_ijazah);
+    $json_skhun = json_encode($existing_skhun);
+    $json_nisn = json_encode($existing_nisn);
+    $json_kip = json_encode($existing_kip);
+    $proses_sel = trim($_POST['proses_seleksi'] ?? '');
+
+    $types = str_repeat('s', 20) . 'i';
+    $stmt->bind_param($types,
+        $nisn,
+        $nama_lengkap,
+        $tempat_lahir,
+        $tanggal_lahir,
+        $jenis_kelamin,
+        $alamat,
+        $asal_sekolah,
+        $no_hp,
+        $email,
+        $program_keahlian,
+        $foto_formal_path,
+        $foto_ijazah_path,
+        $json_akte,
+        $json_kk,
+        $json_ktp,
+        $json_ijazah,
+        $json_skhun,
+        $json_nisn,
+        $json_kip,
+        $proses_sel,
+        $id
+    );
     if (!$stmt->execute()) throw new Exception('Execute failed');
     $stmt->close();
     $mysqli->close();

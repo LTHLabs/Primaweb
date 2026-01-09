@@ -17,7 +17,7 @@ if ($username === $admin['username'] && $password === $admin['password']) {
     // login success
     $_SESSION['admin_logged_in'] = true;
     $_SESSION['admin_user'] = $username;
-    header('Location: pendaftaran.php');
+    header('Location: tabelForm.php');
     exit;
 } else {
     redirect_with_msg('error', 'Username atau password salah.');

@@ -38,13 +38,14 @@ try {
     <?php if (!empty($error)): ?>
         <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
     <?php endif; ?>
-    <a class="btn btn-primary mb-3" href="../index.php#daftar-pendaftar">Kembali ke Landing Page</a>
+    <a class="btn btn-primary mb-3" href="logout.php">Keluar</a>
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
                 <th>#</th>
                 <th>NISN</th>
                 <th>Nama</th>
+                <th>Dokumen</th>
                 <th>Program</th>
                 <th>No HP</th>
                 <th>Email</th>
@@ -58,6 +59,36 @@ try {
                 <td><?php echo $i++; ?></td>
                 <td><?php echo htmlspecialchars($r['nisn']); ?></td>
                 <td><?php echo htmlspecialchars($r['nama_lengkap']); ?></td>
+                <td>
+                    <?php
+                        // dokumen preview: decode semua kolom JSON dan tampilkan link pertama + jumlah
+                        $docCols = [
+                            'akte_files' => 'Akte',
+                            'kk_files' => 'KK',
+                            'ktp_ortu_files' => 'KTP Ortu',
+                            'ijazah_files' => 'Ijazah',
+                            'skhun_files' => 'SKHUN',
+                            'nisn_files' => 'NISN',
+                            'kip_files' => 'KIP/PIP'
+                        ];
+                        $docParts = [];
+                        foreach ($docCols as $col => $label) {
+                            if (!empty($r[$col])) {
+                                $arr = json_decode($r[$col], true);
+                                if (is_array($arr) && count($arr) > 0) {
+                                    $first = $arr[0];
+                                    $count = count($arr);
+                                    $docParts[] = '<a href="../'.htmlspecialchars($first).'" target="_blank">'.htmlspecialchars($label).' ('.intval($count).')</a>';
+                                }
+                            }
+                        }
+                        if (count($docParts) > 0) {
+                            echo implode('<br>', $docParts);
+                        } else {
+                            echo '<span class="text-muted">Tidak ada dokumen</span>';
+                        }
+                    ?>
+                </td>
                 <td><?php echo htmlspecialchars($r['program_keahlian']); ?></td>
                 <td><?php echo htmlspecialchars($r['no_hp']); ?></td>
                 <td><?php echo htmlspecialchars($r['email']); ?></td>

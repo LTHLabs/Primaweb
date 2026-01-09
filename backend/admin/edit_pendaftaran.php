@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 if ($id <= 0) {
-    header('Location: pendaftaran.php'); exit;
+    header('Location: tabelForm.php'); exit;
 }
 
 if (empty($_SESSION['admin_logged_in'])) {
@@ -23,7 +23,7 @@ try {
     $stmt->close();
     $mysqli->close();
 } catch (Exception $e) {
-    header('Location: pendaftaran.php'); exit;
+    header('Location: tabelForm.php'); exit;
 }
 ?>
 <!doctype html>
@@ -62,6 +62,58 @@ try {
                 <option value="">- Pilih -</option>
                 <option value="Laki-laki" <?php echo ($row['jenis_kelamin']=='Laki-laki'?'selected':''); ?>>Laki-laki</option>
                 <option value="Perempuan" <?php echo ($row['jenis_kelamin']=='Perempuan'?'selected':''); ?>>Perempuan</option>
+            </select>
+        </div>
+
+        <?php
+            // decode dokumen JSON if available
+            $akte = !empty($row['akte_files']) ? json_decode($row['akte_files'], true) : [];
+            $kk = !empty($row['kk_files']) ? json_decode($row['kk_files'], true) : [];
+            $ktp = !empty($row['ktp_ortu_files']) ? json_decode($row['ktp_ortu_files'], true) : [];
+            $ijazah = !empty($row['ijazah_files']) ? json_decode($row['ijazah_files'], true) : [];
+            $skhun = !empty($row['skhun_files']) ? json_decode($row['skhun_files'], true) : [];
+            $nisn_files = !empty($row['nisn_files']) ? json_decode($row['nisn_files'], true) : [];
+            $kip = !empty($row['kip_files']) ? json_decode($row['kip_files'], true) : [];
+        ?>
+
+        <hr>
+        <h5>Dokumen Terlampir</h5>
+
+        <?php function renderFilesSection($label, $fieldName, $files) { ?>
+            <div class="mb-3">
+                <label class="form-label"><?php echo $label; ?></label>
+                <?php if (!empty($files) && is_array($files)): ?>
+                    <ul>
+                        <?php foreach ($files as $f): ?>
+                            <li>
+                                <a target="_blank" href="../<?php echo htmlspecialchars($f); ?>"><?php echo basename($f); ?></a>
+                                &nbsp;<label><input type="checkbox" name="remove_<?php echo $fieldName; ?>[]" value="<?php echo htmlspecialchars($f); ?>"> Hapus</label>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p class="text-muted">Tidak ada file.</p>
+                <?php endif; ?>
+                <label class="form-label">Unggah file baru (maks 3 total untuk jenis ini)</label>
+                <input type="file" name="<?php echo $fieldName; ?>[]" multiple accept="image/*,application/pdf" class="form-control">
+            </div>
+        <?php } ?>
+
+        <?php renderFilesSection('FC. Akte Lahir', 'akte_files', $akte); ?>
+        <?php renderFilesSection('FC. KK', 'kk_files', $kk); ?>
+        <?php renderFilesSection('FC. KTP Orang Tua', 'ktp_ortu_files', $ktp); ?>
+        <?php renderFilesSection('FC. Ijazah Legalisir', 'ijazah_files', $ijazah); ?>
+        <?php renderFilesSection('FC. SKHUN Legalisir', 'skhun_files', $skhun); ?>
+        <?php renderFilesSection('FC. NISN', 'nisn_files', $nisn_files); ?>
+        <?php renderFilesSection('FC. KIP/PIP (jika ada)', 'kip_files', $kip); ?>
+
+        <div class="mb-3">
+            <label>Proses Seleksi</label>
+            <select class="form-control" name="proses_seleksi">
+                <option value="">- Pilih -</option>
+                <option value="Seleksi Berkas" <?php echo ($row['proses_seleksi']=='Seleksi Berkas'?'selected':''); ?>>Seleksi Berkas</option>
+                <option value="Wawancara" <?php echo ($row['proses_seleksi']=='Wawancara'?'selected':''); ?>>Wawancara</option>
+                <option value="Tes" <?php echo ($row['proses_seleksi']=='Tes'?'selected':''); ?>>Tes</option>
             </select>
         </div>
         <div class="mb-3">

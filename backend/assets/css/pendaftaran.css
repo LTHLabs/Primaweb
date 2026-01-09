@@ -1,0 +1,17 @@
+body { font-family: Arial, sans-serif; background: #f4f6f8; color: #222; }
+.gradient-form { background: #f4f6f8; }
+.card { border: none; }
+.left-col-center { text-align: center; }
+.login-logo { max-width: 120px; display: inline-block; margin-bottom: 12px; }
+.right-panel { background: linear-gradient(135deg, #4e73df 0%, #224abe 100%); }
+.right-panel img { object-fit: cover; height: 100%; }
+.btn-block { width: 100%; }
+
+/* Responsive tweak */
+@media (max-width: 991px) {
+	.right-panel { display: none; }
+}
+
+.alert { padding:10px; border-radius:4px; margin-bottom:12px; }
+.alert-success { background:#e6ffed; color:#0a8a2f; }
+.alert-danger { background:#ffe6e6; color:#b30000; }
