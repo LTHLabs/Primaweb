@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/pendaftaran.css">
         <style>
-        /* disable browser native :valid green styling inside our form so JS controls UX */
         #pendaftaranForm input:valid,
         #pendaftaranForm select:valid,
         #pendaftaranForm textarea:valid {
@@ -101,19 +100,70 @@
                                         </div>
                                     </div>
 
+                                    <!-- Pilihan Ekstrakurikuler -->
                                     <div class="mb-3">
-                                        <label class="form-label" for="program_keahlian">Program Keahlian</label>
-                                        <select id="program_keahlian" name="program_keahlian" class="form-select">
-                                            <option value="">Pilih Program...</option>
-                                            <option value="Rekayasa Perangkat Lunak (RPL)">Rekayasa Perangkat Lunak (RPL)</option>
-                                            <option value="Teknik Komputer Jaringan (TKJ)">Teknik Komputer Jaringan (TKJ)</option>
-                                            <option value="Desain Komunikasi Visual (DKV)">Desain Komunikasi Visual (DKV)</option>
-                                        </select>
-                                        <div class="invalid-feedback">Pilih program keahlian.</div>
+                                        <label class="form-label">Pilih Ekstrakurikuler (boleh lebih dari satu)</label>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="Pramuka" id="ekskul_pramuka">
+                                                    <label class="form-check-label" for="ekskul_pramuka">Pramuka</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="Paskibra" id="ekskul_paskibra">
+                                                    <label class="form-check-label" for="ekskul_paskibra">Paskibra</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="UKS PMR" id="ekskul_uks_pmr">
+                                                    <label class="form-check-label" for="ekskul_uks_pmr">UKS PMR</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="BTQ (Baca Tulis Al-Quran)" id="ekskul_btq">
+                                                    <label class="form-check-label" for="ekskul_btq">BTQ (Baca Tulis Al-Quran)</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="Hadroh" id="ekskul_hadroh">
+                                                    <label class="form-check-label" for="ekskul_hadroh">Hadroh</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="Rebana" id="ekskul_rebana">
+                                                    <label class="form-check-label" for="ekskul_rebana">Rebana</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="Marawis" id="ekskul_marawis">
+                                                    <label class="form-check-label" for="ekskul_marawis">Marawis</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="Markaz Lughoh Arabic" id="ekskul_arabic">
+                                                    <label class="form-check-label" for="ekskul_arabic">Markaz Lughoh Arabic</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="English Club" id="ekskul_english">
+                                                    <label class="form-check-label" for="ekskul_english">English Club</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="Matematika Club" id="ekskul_matematika">
+                                                    <label class="form-check-label" for="ekskul_matematika">Matematika Club</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="Tenis Meja" id="ekskul_tenis">
+                                                    <label class="form-check-label" for="ekskul_tenis">Tenis Meja</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="Futsal" id="ekskul_futsal">
+                                                    <label class="form-check-label" for="ekskul_futsal">Futsal</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="Pengembangan Diri Komputer & Internet" id="ekskul_komputer">
+                                                    <label class="form-check-label" for="ekskul_komputer">Pengembangan Diri Komputer & Internet</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="invalid-feedback">Pilih minimal satu ekstrakurikuler.</div>
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="foto_formal">Foto Formal (opsional)</label>
+                                        <label class="form-label" for="foto_formal">Foto 3x4 (3 lembar)</label>
                                         <input type="file" id="foto_formal" name="foto_formal" accept="image/*" class="form-control" required>
                                         <div class="invalid-feedback">Ukuran file terlalu besar atau format tidak didukung.</div>
                                     </div>
@@ -186,7 +236,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex align-items-center right-panel">
-                                <img class="w-100" src="assets/images/header/MTs_An-Nur_Kota_Cirebon.jpg" alt="header image">
+                                <img class="w-100" src="assets/images/header/header-poster.jpg" alt="header image">
                         </div>
                     </div>
                 </div>

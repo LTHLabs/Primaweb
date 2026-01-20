@@ -15,7 +15,21 @@ try {
     $mysqli = db_connect();
     $res = $mysqli->query('SELECT * FROM pendaftaran_siswa ORDER BY tanggal_daftar DESC');
     $rows = [];
-    while ($r = $res->fetch_assoc()) $rows[] = $r;
+    $ekskul_counts = [];
+    $total_siswa = 0;
+    while ($r = $res->fetch_assoc()) {
+        $rows[] = $r;
+        $total_siswa++;
+        if (!empty($r['ekstrakurikuler'])) {
+            $eks = json_decode($r['ekstrakurikuler'], true);
+            if (is_array($eks)) {
+                foreach ($eks as $e) {
+                    if (!isset($ekskul_counts[$e])) $ekskul_counts[$e] = 0;
+                    $ekskul_counts[$e]++;
+                }
+            }
+        }
+    }
     $mysqli->close();
 } catch (Exception $e) {
     $rows = [];
@@ -28,18 +42,36 @@ try {
 <meta charset="utf-8">
 <title>Admin - Pendaftaran Siswa</title>
 <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="shortcut icon" href="../assets/images/logo.jpg" type="image/x-icon" />
 </head>
 <body>
 <div class="container mt-4">
-    <h3>Admin - Daftar Pendaftar</h3>
-    <?php if (!empty($flash)): ?>
-        <div class="alert alert-<?php echo ($flash['status']==='success'?'success':'warning'); ?>"><?php echo htmlspecialchars($flash['msg']); ?></div>
-    <?php endif; ?>
-    <?php if (!empty($error)): ?>
-        <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
-    <?php endif; ?>
-    <a class="btn btn-primary mb-3" href="logout.php">Keluar</a>
-    <table class="table table-striped table-bordered">
+        <h3>Admin - Daftar Pendaftar</h3>
+        <?php if (!empty($flash)): ?>
+                <div class="alert alert-<?php echo ($flash['status']==='success'?'success':'warning'); ?>"><?php echo htmlspecialchars($flash['msg']); ?></div>
+        <?php endif; ?>
+        <?php if (!empty($error)): ?>
+                <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
+        <?php endif; ?>
+        <a class="btn btn-primary mb-3" href="logout.php">Keluar</a>
+
+        <!-- Rekap Jumlah Siswa -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Rekap Jumlah Siswa</h5>
+                <p>Total Pendaftar: <strong><?php echo $total_siswa; ?></strong></p>
+                <ul>
+                    <?php foreach ($ekskul_counts as $eks => $count): ?>
+                        <li><?php echo htmlspecialchars($eks); ?>: <strong><?php echo $count; ?></strong></li>
+                    <?php endforeach; ?>
+                </ul>
+                <form method="post" action="unduh_rekap.php" style="display:inline;">
+                    <button type="submit" class="btn btn-success btn-sm">Unduh Rekap (CSV)</button>
+                </form>
+            </div>
+        </div>
+
+        <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
                 <th>#</th>
@@ -48,7 +80,7 @@ try {
                 <th>Foto Formal</th>
                 <th>Foto Ijazah</th>
                 <th>Dokumen</th>
-                <th>Program</th>
+                <th>Ekstrakurikuler</th>
                 <th>No HP</th>
                 <th>Email</th>
                 <th>Tanggal Daftar</th>
@@ -105,13 +137,32 @@ try {
                         }
                     ?>
                 </td>
-                <td><?php echo htmlspecialchars($r['program_keahlian']); ?></td>
+                <td>
+                    <?php
+                    if (!empty($r['ekstrakurikuler'])) {
+                        $eks = json_decode($r['ekstrakurikuler'], true);
+                        if (is_array($eks)) {
+                            echo implode('<br>', array_map('htmlspecialchars', $eks));
+                        } else {
+                            echo htmlspecialchars($r['ekstrakurikuler']);
+                        }
+                    } else {
+                        echo '<span class="text-muted">-</span>';
+                    }
+                    ?>
+                </td>
                 <td><?php echo htmlspecialchars($r['no_hp']); ?></td>
                 <td><?php echo htmlspecialchars($r['email']); ?></td>
                 <td><?php echo htmlspecialchars($r['tanggal_daftar']); ?></td>
                 <td>
                     <a class="btn btn-sm btn-info" href="edit_pendaftaran.php?id=<?php echo $r['id_pendaftaran']; ?>">Edit</a>
                     <a class="btn btn-sm btn-danger" href="../controllers/pendaftaran_delete.php?id=<?php echo $r['id_pendaftaran']; ?>" onclick="return confirm('Hapus data ini?')">Hapus</a>
+                    <form method="post" action="verifikasi_email.php" style="display:inline;">
+                        <input type="hidden" name="id_pendaftaran" value="<?php echo $r['id_pendaftaran']; ?>">
+                        <input type="hidden" name="email" value="<?php echo htmlspecialchars($r['email']); ?>">
+                        <input type="hidden" name="nama" value="<?php echo htmlspecialchars($r['nama_lengkap']); ?>">
+                        <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Verifikasi dan kirim email ke siswa ini?')">Verifikasi & Kirim Email</button>
+                    </form>
                 </td>
             </tr>
             <?php endforeach; ?>

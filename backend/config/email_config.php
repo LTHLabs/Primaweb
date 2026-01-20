@@ -7,7 +7,7 @@ return [
     'smtp_username' => 'poeradiredja12@gmail.com',
     'smtp_password' => 'ayek rguc xcbr zbvt',
     'from_email'    => 'poeradiredja12@gmail.com', 
-    'from_name'     => 'SMK Prima Bangsa - Website', 
+    'from_name'     => 'MTs An-Nur Kota Cirebon - Website', 
 ];
 
 /* 

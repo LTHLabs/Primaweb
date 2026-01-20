@@ -15,7 +15,6 @@ $DESTINATION_EMAIL = $email_config['smtp_username'];
 
 function redirect_with_flash($status, $msg = '') {
     $_SESSION['contact_flash'] = ['status' => $status, 'msg' => $msg];
-    // redirect to contact area where flash is displayed
     header('Location: ../index.php#contact');
     exit;
 }
@@ -35,7 +34,8 @@ $alamat = isset($_POST['alamat']) ? trim($_POST['alamat']) : null;
 $asal_sekolah = isset($_POST['asal_sekolah']) ? trim($_POST['asal_sekolah']) : null;
 $no_hp = isset($_POST['no_hp']) ? trim($_POST['no_hp']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
-$program_keahlian = isset($_POST['program_keahlian']) ? trim($_POST['program_keahlian']) : null;
+$ekstrakurikuler = isset($_POST['ekstrakurikuler']) ? $_POST['ekstrakurikuler'] : [];
+if (!is_array($ekstrakurikuler)) $ekstrakurikuler = [$ekstrakurikuler];
 
 $errors = [];
 if ($nisn === '') $errors[] = 'NISN wajib diisi.';
@@ -71,7 +71,6 @@ function handle_file($field, $upload_dir, $allowed_types, $max_size) {
     $safe = time() . '_' . bin2hex(random_bytes(6)) . '.' . $ext;
     $dest = $upload_dir . $safe;
     if (move_uploaded_file($f['tmp_name'], $dest)) {
-        // return relative path from backend root
         return 'uploads/pendaftaran/' . $safe;
     }
     return null;
@@ -91,10 +90,11 @@ $token_expired = (new DateTime('+7 days'))->format('Y-m-d H:i:s');
 try {
     $mysqli = db_connect();
     $stmt = $mysqli->prepare("INSERT INTO pendaftaran_siswa 
-        (nisn, nama_lengkap, tempat_lahir, tanggal_lahir, jenis_kelamin, alamat, asal_sekolah, no_hp, email, token, token_expired, program_keahlian, foto_formal, foto_ijazah)
+        (nisn, nama_lengkap, tempat_lahir, tanggal_lahir, jenis_kelamin, alamat, asal_sekolah, no_hp, email, token, token_expired, ekstrakurikuler, foto_formal, foto_ijazah)
         VALUES (?, ?, ?, NULLIF(?, ''), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     if (!$stmt) throw new Exception('Prepare failed: ' . $mysqli->error);
-    $stmt->bind_param('ssssssssssssss', $nisn, $nama_lengkap, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $alamat, $asal_sekolah, $no_hp, $email, $token, $token_expired, $program_keahlian, $foto_formal_path, $foto_ijazah_path);
+    $ekstrakurikuler_json = json_encode($ekstrakurikuler);
+    $stmt->bind_param('ssssssssssssss', $nisn, $nama_lengkap, $tempat_lahir, $tanggal_lahir, $jenis_kelamin, $alamat, $asal_sekolah, $no_hp, $email, $token, $token_expired, $ekstrakurikuler_json, $foto_formal_path, $foto_ijazah_path);
     if (!$stmt->execute()) throw new Exception('Execute failed: ' . $stmt->error);
     $inserted_id = $stmt->insert_id;
     $stmt->close();
@@ -103,10 +103,12 @@ try {
     redirect_with_flash('error', 'Database error saat menyimpan pendaftaran.');
 }
 
-// Send notification email to admin
+// notification email to admin
+
 $mail_subject = "[PSB] Pendaftaran Baru: " . $nama_lengkap;
 $mail_body = "Pendaftaran baru masuk:\n\n";
-$mail_body .= "NISN: $nisn\nNama: $nama_lengkap\nEmail: $email\nHP: $no_hp\nProgram: $program_keahlian\nID: $inserted_id\nToken: $token\n";
+$mail_body .= "NISN: $nisn\nNama: $nama_lengkap\nEmail: $email\nHP: $no_hp\n";
+$mail_body .= "Ekstrakurikuler: ".implode(', ', $ekstrakurikuler)."\nID: $inserted_id\nToken: $token\n";
 
 $mail = new PHPMailer(true);
 $mail_sent = false;

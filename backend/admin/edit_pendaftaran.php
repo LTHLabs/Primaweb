@@ -135,13 +135,27 @@ try {
             </div>
         </div>
         <div class="mb-3">
-            <label>Program Keahlian</label>
-            <select class="form-control" name="program_keahlian">
-                <option value="">- Pilih -</option>
-                <option value="Rekayasa Perangkat Lunak (RPL)" <?php echo ($row['program_keahlian']=='Rekayasa Perangkat Lunak (RPL)'?'selected':''); ?>>Rekayasa Perangkat Lunak (RPL)</option>
-                <option value="Teknik Komputer Jaringan (TKJ)" <?php echo ($row['program_keahlian']=='Teknik Komputer Jaringan (TKJ)'?'selected':''); ?>>Teknik Komputer Jaringan (TKJ)</option>
-                <option value="Desain Komunikasi Visual (DKV)" <?php echo ($row['program_keahlian']=='Desain Komunikasi Visual (DKV)'?'selected':''); ?>>Desain Komunikasi Visual (DKV)</option>
-            </select>
+            <label>Pilih Ekstrakurikuler (boleh lebih dari satu)</label>
+            <?php
+            $ekskul_list = [
+                'Pramuka', 'Paskibra', 'UKS PMR', 'BTQ (Baca Tulis Al-Quran)',
+                'Hadroh', 'Rebana', 'Marawis', 'Markaz Lughoh Arabic',
+                'English Club', 'Matematika Club', 'Tenis Meja', 'Futsal',
+                'Pengembangan Diri Komputer & Internet'
+            ];
+            $ekskul_selected = !empty($row['ekstrakurikuler']) ? json_decode($row['ekstrakurikuler'], true) : [];
+            if (!is_array($ekskul_selected)) $ekskul_selected = [];
+            ?>
+            <div class="row">
+                <div class="col-12">
+                    <?php foreach ($ekskul_list as $eks): ?>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ekstrakurikuler[]" value="<?php echo htmlspecialchars($eks); ?>" id="ekskul_<?php echo md5($eks); ?>" <?php echo in_array($eks, $ekskul_selected)?'checked':''; ?>>
+                            <label class="form-check-label" for="ekskul_<?php echo md5($eks); ?>"><?php echo htmlspecialchars($eks); ?></label>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
         <div class="mb-3">
             <label>Foto Formal (kosongkan untuk tidak mengganti)</label>

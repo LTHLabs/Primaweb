@@ -15,7 +15,7 @@ if ($id <= 0) {
 
 try {
     $mysqli = db_connect();
-    // fetch file paths and dokumen JSON
+   
     $sel = $mysqli->prepare('SELECT foto_formal, foto_ijazah, akte_files, kk_files, ktp_ortu_files, ijazah_files, skhun_files, nisn_files, kip_files FROM pendaftaran_siswa WHERE id_pendaftaran = ?');
     $sel->bind_param('i', $id);
     $sel->execute();

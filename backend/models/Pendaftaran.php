@@ -5,16 +5,15 @@ class Pendaftaran {
     public static function save(array $data) {
         $conn = db_connect();
 
-        // Menyimpan juga daftar file dokumen dalam bentuk JSON untuk setiap jenis
-        // gunakan NULLIF untuk tanggal_lahir agar string kosong tersimpan sebagai NULL di DB
+       
         $sql = "INSERT INTO pendaftaran_siswa (
             nisn, nama_lengkap, tempat_lahir, tanggal_lahir, jenis_kelamin,
             alamat, asal_sekolah, no_hp, email, token, token_expired,
-            program_keahlian,
+            ekstrakurikuler,
             akte_files, kk_files, ktp_ortu_files, ijazah_files, skhun_files, nisn_files, kip_files,
             proses_seleksi,
             foto_formal, foto_ijazah
-        ) VALUES (?, ?, ?, NULLIF(?, ''), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        ) VALUES (?, ?, ?, NULLIF(?, ''), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $conn->prepare($sql);
         if (! $stmt) {
@@ -22,7 +21,7 @@ class Pendaftaran {
         }
 
         $stmt->bind_param(
-            str_repeat('s', 22),
+            str_repeat('s', 21),
             $data['nisn'],
             $data['nama_lengkap'],
             $data['tempat_lahir'],
@@ -34,7 +33,7 @@ class Pendaftaran {
             $data['email'],
             $data['token'],
             $data['token_expired'],
-            $data['program_keahlian'],
+            $data['ekstrakurikuler'],
             $data['akte_files'],
             $data['kk_files'],
             $data['ktp_ortu_files'],

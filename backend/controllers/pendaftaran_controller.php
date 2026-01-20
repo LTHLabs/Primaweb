@@ -16,9 +16,9 @@ class PendaftaranController {
         $asal_sekolah = trim($_POST['sekolah_asal'] ?? '');
         $email = trim($_POST['email'] ?? '');
         $no_hp = trim($_POST['telepon'] ?? '');
-        $program_keahlian = trim($_POST['program_keahlian'] ?? '');
+        $ekstrakurikuler = isset($_POST['ekstrakurikuler']) ? $_POST['ekstrakurikuler'] : [];
+        if (!is_array($ekstrakurikuler)) $ekstrakurikuler = [$ekstrakurikuler];
 
-        // UX-friendly validation
         $errors = [];
         if ($nama_lengkap === '') $errors[] = 'Nama lengkap wajib diisi.';
         if ($nisn === '') $errors[] = 'NISN wajib diisi.';
@@ -33,7 +33,6 @@ class PendaftaranController {
             }
         }
 
-        // check required uploaded files
         $hasUploaded = function($field) {
             if (empty($_FILES[$field])) return false;
             $file = $_FILES[$field];
@@ -69,7 +68,6 @@ class PendaftaranController {
             if (empty($_FILES[$fieldName])) {
                 return $result;
             }
-            // when input name is like name[] PHP structures it as arrays
             if (is_array($_FILES[$fieldName]['name'])) {
                 $count = count($_FILES[$fieldName]['name']);
                 for ($i = 0; $i < $count; $i++) {
@@ -84,7 +82,6 @@ class PendaftaranController {
                     }
                 }
             } else {
-                // single file
                 if ($_FILES[$fieldName]['error'] === UPLOAD_ERR_OK) {
                     $orig = $_FILES[$fieldName]['name'];
                     $tmp = $_FILES[$fieldName]['tmp_name'];
@@ -131,7 +128,7 @@ class PendaftaranController {
             'email' => $email,
             'token' => $token,
             'token_expired' => $token_expired,
-            'program_keahlian' => $program_keahlian,
+            'ekstrakurikuler' => json_encode($ekstrakurikuler),
             'akte_files' => json_encode(array_slice($akte_files, 0, 3)),
             'kk_files' => json_encode(array_slice($kk_files, 0, 3)),
             'ktp_ortu_files' => json_encode(array_slice($ktp_ortu_files, 0, 3)),

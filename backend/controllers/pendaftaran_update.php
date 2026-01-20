@@ -25,7 +25,8 @@ $alamat = isset($_POST['alamat']) ? trim($_POST['alamat']) : null;
 $asal_sekolah = isset($_POST['asal_sekolah']) ? trim($_POST['asal_sekolah']) : null;
 $no_hp = isset($_POST['no_hp']) ? trim($_POST['no_hp']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
-$program_keahlian = isset($_POST['program_keahlian']) ? trim($_POST['program_keahlian']) : null;
+$ekstrakurikuler = isset($_POST['ekstrakurikuler']) ? $_POST['ekstrakurikuler'] : [];
+if (!is_array($ekstrakurikuler)) $ekstrakurikuler = [$ekstrakurikuler];
 
 if ($nisn === '' || $nama_lengkap === '' || $email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     redirect_with_flash('error', 'Validasi gagal: NISN/Nama/Email wajib dan harus valid.');
@@ -61,7 +62,6 @@ function handle_update_file($field, $upload_dir, $allowed_types, $max_size, $exi
     return $existing;
 }
 
-// fetch existing to know file paths and dokumen JSON
 try {
     $mysqli = db_connect();
     $sel = $mysqli->prepare('SELECT foto_formal, foto_ijazah, akte_files, kk_files, ktp_ortu_files, ijazah_files, skhun_files, nisn_files, kip_files, proses_seleksi FROM pendaftaran_siswa WHERE id_pendaftaran = ?');
@@ -77,7 +77,6 @@ try {
 $foto_formal_path = handle_update_file('foto_formal', $upload_dir, $allowed_types, $max_size, $row['foto_formal']);
 $foto_ijazah_path = handle_update_file('foto_ijazah', $upload_dir, $allowed_types, $max_size, $row['foto_ijazah']);
 
-// decode existing dokumen lists
 $existing_akte = !empty($row['akte_files']) ? json_decode($row['akte_files'], true) : [];
 $existing_kk = !empty($row['kk_files']) ? json_decode($row['kk_files'], true) : [];
 $existing_ktp = !empty($row['ktp_ortu_files']) ? json_decode($row['ktp_ortu_files'], true) : [];
@@ -86,7 +85,6 @@ $existing_skhun = !empty($row['skhun_files']) ? json_decode($row['skhun_files'],
 $existing_nisn = !empty($row['nisn_files']) ? json_decode($row['nisn_files'], true) : [];
 $existing_kip = !empty($row['kip_files']) ? json_decode($row['kip_files'], true) : [];
 
-// process removals from admin
 $remove_akte = $_POST['remove_akte_files'] ?? $_POST['remove_akte'] ?? [];
 $remove_kk = $_POST['remove_kk_files'] ?? $_POST['remove_kk'] ?? [];
 $remove_ktp = $_POST['remove_ktp_ortu_files'] ?? $_POST['remove_ktp'] ?? [];
@@ -95,7 +93,6 @@ $remove_skhun = $_POST['remove_skhun_files'] ?? $_POST['remove_skhun'] ?? [];
 $remove_nisn = $_POST['remove_nisn_files'] ?? $_POST['remove_nisn'] ?? [];
 $remove_kip = $_POST['remove_kip_files'] ?? $_POST['remove_kip'] ?? [];
 
-// filter existing arrays
 $existing_akte = array_values(array_filter($existing_akte, function($v) use ($remove_akte){ return !in_array($v, (array)$remove_akte); }));
 $existing_kk = array_values(array_filter($existing_kk, function($v) use ($remove_kk){ return !in_array($v, (array)$remove_kk); }));
 $existing_ktp = array_values(array_filter($existing_ktp, function($v) use ($remove_ktp){ return !in_array($v, (array)$remove_ktp); }));
@@ -104,7 +101,6 @@ $existing_skhun = array_values(array_filter($existing_skhun, function($v) use ($
 $existing_nisn = array_values(array_filter($existing_nisn, function($v) use ($remove_nisn){ return !in_array($v, (array)$remove_nisn); }));
 $existing_kip = array_values(array_filter($existing_kip, function($v) use ($remove_kip){ return !in_array($v, (array)$remove_kip); }));
 
-// helper upload multiple
 $uploadMultiple = function($fieldName, $prefix) use ($upload_dir) {
     $ret = [];
     if (empty($_FILES[$fieldName])) return $ret;
@@ -128,7 +124,6 @@ $uploadMultiple = function($fieldName, $prefix) use ($upload_dir) {
     return $ret;
 };
 
-// append newly uploaded files (and cap to 3)
 $new_akte = $uploadMultiple('akte_files', 'akte');
 $existing_akte = array_slice(array_merge($existing_akte, $new_akte), 0, 3);
 $new_kk = $uploadMultiple('kk_files', 'kk');
@@ -145,8 +140,7 @@ $new_kip = $uploadMultiple('kip_files', 'kip');
 $existing_kip = array_slice(array_merge($existing_kip, $new_kip), 0, 3);
 
 try {
-    $stmt = $mysqli->prepare('UPDATE pendaftaran_siswa SET nisn=?, nama_lengkap=?, tempat_lahir=?, tanggal_lahir=NULLIF(?, \'\'), jenis_kelamin=?, alamat=?, asal_sekolah=?, no_hp=?, email=?, program_keahlian=?, foto_formal=?, foto_ijazah=?, akte_files=?, kk_files=?, ktp_ortu_files=?, ijazah_files=?, skhun_files=?, nisn_files=?, kip_files=?, proses_seleksi=? WHERE id_pendaftaran = ?');
-    // prepare JSON strings and process_seleksi as variables (bind_param requires variables passed by reference)
+    $stmt = $mysqli->prepare('UPDATE pendaftaran_siswa SET nisn=?, nama_lengkap=?, tempat_lahir=?, tanggal_lahir=NULLIF(?, \'\'), jenis_kelamin=?, alamat=?, asal_sekolah=?, no_hp=?, email=?, ekstrakurikuler=?, foto_formal=?, foto_ijazah=?, akte_files=?, kk_files=?, ktp_ortu_files=?, ijazah_files=?, skhun_files=?, nisn_files=?, kip_files=?, proses_seleksi=? WHERE id_pendaftaran = ?');
     $json_akte = json_encode($existing_akte);
     $json_kk = json_encode($existing_kk);
     $json_ktp = json_encode($existing_ktp);
@@ -155,6 +149,7 @@ try {
     $json_nisn = json_encode($existing_nisn);
     $json_kip = json_encode($existing_kip);
     $proses_sel = trim($_POST['proses_seleksi'] ?? '');
+    $ekstrakurikuler_json = json_encode($ekstrakurikuler);
 
     $types = str_repeat('s', 20) . 'i';
     $stmt->bind_param($types,
@@ -167,7 +162,7 @@ try {
         $asal_sekolah,
         $no_hp,
         $email,
-        $program_keahlian,
+        $ekstrakurikuler_json,
         $foto_formal_path,
         $foto_ijazah_path,
         $json_akte,

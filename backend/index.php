@@ -134,13 +134,13 @@ try {
         <h5 class="social-title">Ikuti Kami</h5>
         <ul>
           <li>
-            <a href="https://facebook.com/smkprimabangsa" target="_blank"><i class="lni lni-facebook-filled"></i></a>
+            <a href=" " target="_blank"><i class="lni lni-facebook-filled"></i></a>
           </li>
           <li>
-            <a href="https://instagram.com/smkprimabangsa" target="_blank"><i class="lni lni-instagram-original"></i></a>
+            <a href=" " target="_blank"><i class="lni lni-instagram-original"></i></a>
           </li>
           <li>
-            <a href="https://youtu.be/-rRAuQzVq4s?si=NHIvEorYlw0Q6pQV" target="_blank"><i class="lni lni-youtube"></i></a>
+            <a href=" " target="_blank"><i class="lni lni-youtube"></i></a>
           </li>
         </ul>
       </div>
@@ -163,7 +163,7 @@ try {
             </p>
             <div class="button">
               <a href="viewform.php" class="btn btn-outline-warning">Daftar Sekarang</a>
-              <a href="https://www.youtube.com/watch?v=-rRAuQzVq4s"
+              <a href="https://www.youtube.com/watch?v=LzdsUZcw8L4"
                 class="glightbox video-button">
                 <span class="btn btn-light rounded-full btn-outline-warning">
                   <i class="lni lni-play text-dark"></i>
@@ -401,6 +401,35 @@ try {
             </div>
           </div>
         </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-calculator"></i>
+            </div>
+            <div class="service-content">
+              <h4>Matematika Club</h4>
+              <p>
+                Ekstrakurikuler yang mendorong siswa untuk mengasah logika, kemampuan berhitung, dan berkompetisi dalam olimpiade matematika.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services">
+            <div class="service-icon">
+              <i class="lni lni-display"></i>
+            </div>
+            <div class="service-content">
+              <h4>Pengembangan Diri Komputer & Internet</h4>
+              <p>
+                Kegiatan yang membekali siswa keterampilan komputer, internet, dan teknologi digital untuk mendukung pembelajaran dan kreativitas.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div class="col-lg-4 col-md-6">
           <div class="single-services">
             <div class="service-icon">
@@ -432,7 +461,7 @@ try {
               <h6>Fasilitas</h6>
               <h2 class="fw-bold">Fasilitas Madrasah</h2>
               <p>
-                MTs An-Nur dilengkapi dengan berbagai fasilitas modern untuk mendukung proses belajar mengajar yang optimal dan kenyamanan siswa, antara lain:
+                MTs An-Nur menyediakan fasilitas utama yang mendukung kegiatan belajar, organisasi, dan literasi siswa secara optimal.
               </p>
             </div>
           </div>
@@ -444,63 +473,33 @@ try {
         <div class="col-lg-4 col-md-6 col-12">
           <div class="pricing-style-fourteen">
             <div class="table-head">
-              <h6 class="title">Laboratorium</h4>
-                <p>Fasilitas praktikum lengkap dengan peralatan modern</p>
-                <div class="facility-icon">
-                  <i class="lni lni-computer-alt"></i>
-                </div>
-            </div>
-
-            <div class="table-content">
-              <ul class="table-list">
-                <li> <i class="lni lni-checkmark-circle"></i> Lab Komputer (40 Unit/Lab)</li>
-                <li> <i class="lni lni-checkmark-circle"></i> Lab Jaringan</li>
-                <li> <i class="lni lni-checkmark-circle"></i> Lab Multimedia</li>
-                <li> <i class="lni lni-checkmark-circle"></i> Studio DKV</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="pricing-style-fourteen middle">
-            <div class="table-head">
-              <h6 class="title">Perpustakaan Digital</h4>
-                <p>Pusat sumber belajar modern dengan koleksi digital dan fisik</p>
-                <div class="facility-icon">
-                  <i class="lni lni-library"></i>
-                </div>
-            </div>
-
-            <div class="table-content">
-              <ul class="table-list">
-                <li> <i class="lni lni-checkmark-circle"></i> E-Library</li>
-                <li> <i class="lni lni-checkmark-circle"></i> Ruang Baca Nyaman</li>
-                <li> <i class="lni lni-checkmark-circle"></i> Koneksi Internet Cepat</li>
-                <li> <i class="lni lni-checkmark-circle"></i> Area Diskusi</li>
-              </ul>
+              <h6 class="title">Ruang OSIS</h6>
+              <p>Ruang khusus untuk pengurus OSIS sebagai pusat kegiatan organisasi siswa, rapat, dan pengembangan kepemimpinan.</p>
+              <div class="facility-icon">
+                <i class="lni lni-users"></i>
+              </div>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 col-12">
           <div class="pricing-style-fourteen">
             <div class="table-head">
-              <h6 class="title">Ruang Multimedia</h4>
-                <p>Ruang dengan perangkat editing dan produksi konten digital untuk siswa DKV dan multimedia.</p>
+              <h6 class="title">Ruang Lab Komputer</h6>
+              <p>Laboratorium komputer dengan perangkat memadai untuk pembelajaran teknologi informasi, praktik komputer, dan pelatihan digital.</p>
+              <div class="facility-icon">
+                <i class="lni lni-computer"></i>
+              </div>
             </div>
-
-            <div class="light-rounded-buttons">
-              <!-- <a href="#facilities" class="btn primary-btn-outline">
-                Lihat Fasilitas
-              </a> -->
-            </div>
-
-            <div class="table-content">
-              <ul class="table-list">
-                <li> <i class="lni lni-checkmark-circle"></i> Studio Editing & Grafis</li>
-                <li> <i class="lni lni-checkmark-circle"></i> Perangkat Kamera & Audio</li>
-                <li> <i class="lni lni-checkmark-circle"></i> Software Profesional</li>
-                <li> <i class="lni lni-checkmark-circle"></i> Area Presentasi</li>
-              </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="pricing-style-fourteen">
+            <div class="table-head">
+              <h6 class="title">Ruang Perpustakaan</h6>
+              <p>Perpustakaan dengan koleksi buku pelajaran, literatur Islami, dan ruang baca nyaman untuk mendukung budaya literasi siswa.</p>
+              <div class="facility-icon">
+                <i class="lni lni-library"></i>
+              </div>
             </div>
           </div>
         </div>
@@ -531,19 +530,108 @@ try {
   </section>
   <!-- Akhir Cta Area -->
 
+
+  <!-- Start Berita & Kegiatan -->
+  <div id="news" class="latest-news-area section">
+    <div class="section-title-five">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="content">
+              <h6>Berita & Kegiatan</h6>
+              <h2 class="fw-bold">Berita & Kegiatan MTs An-Nur</h2>
+              <p>
+                Ikuti perkembangan kegiatan Islami, prestasi, dan pengumuman penting dari MTs An-Nur Kota Cirebon.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="single-news">
+            <div class="image">
+              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan Keagamaan" /></a>
+              <div class="meta-details">
+                <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
+                <span>Oleh Humas MTs</span>
+              </div>
+            </div>
+            <div class="content-body">
+              <h4 class="title">
+                <a href="javascript:void(0)">Pesantren Kilat Ramadhan</a>
+              </h4>
+              <p>
+                Kegiatan pesantren kilat untuk memperdalam ilmu agama, pembinaan akhlak, dan pembiasaan ibadah selama bulan Ramadhan.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="single-news">
+            <div class="image">
+              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Lomba Islami" /></a>
+              <div class="meta-details">
+                <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
+                <span>Oleh Humas MTs</span>
+              </div>
+            </div>
+            <div class="content-body">
+              <h4 class="title">
+                <a href="javascript:void(0)">Lomba Musabaqah Tilawatil Qur'an</a>
+              </h4>
+              <p>
+                Siswa MTs An-Nur meraih prestasi dalam lomba MTQ tingkat kota, membanggakan madrasah dan keluarga besar.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="single-news">
+            <div class="image">
+              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan Sosial" /></a>
+              <div class="meta-details">
+                <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
+                <span>Oleh Humas MTs</span>
+              </div>
+            </div>
+            <div class="content-body">
+              <h4 class="title">
+                <a href="javascript:void(0)">Bakti Sosial & Santunan Anak Yatim</a>
+              </h4>
+              <p>
+                Kegiatan bakti sosial dan santunan anak yatim sebagai wujud kepedulian sosial dan penanaman nilai-nilai kemanusiaan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Akhir Berita & Kegiatan Area -->
+
   <!-- Awal Indikator Jumlah Pendaftar -->
   <?php
   $total_pendaftar = is_array($pendaftar_rows) ? count($pendaftar_rows) : 0;
-  $program_counts = [];
-  if (!empty($pendaftar_rows) && is_array($pendaftar_rows)) {
-    $program_counts = array_count_values(array_map(function($r){ return $r['program_keahlian'] ?? ''; }, $pendaftar_rows));
+  $ekskul_list = [
+    'Pramuka', 'Paskibra', 'UKS PMR', 'BTQ (Baca Tulis Al-Quran)',
+    'Hadroh', 'Rebana', 'Marawis', 'Markaz Lughoh Arabic',
+    'English Club', 'Matematika Club', 'Tenis Meja', 'Futsal',
+    'Pengembangan Diri Komputer & Internet'
+  ];
+  $ekskul_counts = array_fill_keys($ekskul_list, 0);
+  foreach ($pendaftar_rows as $row) {
+    if (!empty($row['ekstrakurikuler'])) {
+      $eks = json_decode($row['ekstrakurikuler'], true);
+      if (is_array($eks)) {
+        foreach ($eks as $e) {
+          if (isset($ekskul_counts[$e])) $ekskul_counts[$e]++;
+        }
+      }
+    }
   }
-  $rpl_count = $program_counts['Rekayasa Perangkat Lunak (RPL)'] ?? 0;
-  $tkj_count = $program_counts['Teknik Komputer Jaringan (TKJ)'] ?? 0;
-  $dkv_count = $program_counts['Desain Komunikasi Visual (DKV)'] ?? 0;
-  $p_rpl = $total_pendaftar ? round($rpl_count * 100 / $total_pendaftar) : 0;
-  $p_tkj = $total_pendaftar ? round($tkj_count * 100 / $total_pendaftar) : 0;
-  $p_dkv = $total_pendaftar ? round($dkv_count * 100 / $total_pendaftar) : 0;
   $last_update = '';
   if ($total_pendaftar > 0) {
     $dates = array_filter(array_column($pendaftar_rows, 'tanggal_daftar'));
@@ -575,38 +663,21 @@ try {
         <div class="col-lg-8">
           <div class="card shadow-sm h-100">
             <div class="card-body">
-              <h5 class="card-title mb-3">Distribusi Program Keahlian</h5>
-
-              <div class="mb-3">
-                <div class="d-flex justify-content-between">
-                  <div><strong>Rekayasa Perangkat Lunak (RPL)</strong></div>
-                  <div class="text-muted"><?= $rpl_count; ?> siswa <small class="text-muted"> (<?= $p_rpl; ?>%)</small></div>
+              <h5 class="card-title mb-3">Distribusi Ekstrakurikuler</h5>
+              <?php foreach ($ekskul_list as $eks): 
+                $count = $ekskul_counts[$eks] ?? 0;
+                $percent = $total_pendaftar ? round($count * 100 / $total_pendaftar) : 0;
+              ?>
+                <div class="mb-2">
+                  <div class="d-flex justify-content-between">
+                    <div><strong><?= htmlspecialchars($eks); ?></strong></div>
+                    <div class="text-muted"><?= $count; ?> siswa <small class="text-muted"> (<?= $percent; ?>%)</small></div>
+                  </div>
+                  <div class="progress" style="height:10px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: <?= $percent; ?>%;" aria-valuenow="<?= $percent; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
                 </div>
-                <div class="progress" style="height:10px;">
-                  <div class="progress-bar bg-success" role="progressbar" style="width: <?= $p_rpl; ?>%;" aria-valuenow="<?= $p_rpl; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-
-              <div class="mb-3">
-                <div class="d-flex justify-content-between">
-                  <div><strong>Teknik Komputer Jaringan (TKJ)</strong></div>
-                  <div class="text-muted"><?= $tkj_count; ?> siswa <small class="text-muted"> (<?= $p_tkj; ?>%)</small></div>
-                </div>
-                <div class="progress" style="height:10px;">
-                  <div class="progress-bar bg-warning" role="progressbar" style="width: <?= $p_tkj; ?>%;" aria-valuenow="<?= $p_tkj; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-
-              <div class="mb-2">
-                <div class="d-flex justify-content-between">
-                  <div><strong>Desain Komunikasi Visual (DKV)</strong></div>
-                  <div class="text-muted"><?= $dkv_count; ?> siswa <small class="text-muted"> (<?= $p_dkv; ?>%)</small></div>
-                </div>
-                <div class="progress" style="height:10px;">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: <?= $p_dkv; ?>%;" aria-valuenow="<?= $p_dkv; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-
+              <?php endforeach; ?>
               <div class="mt-4 text-end">
                 <a href="#daftar-pendaftar" class="btn btn-outline-success">Lihat Rincian</a>
               </div>
@@ -618,244 +689,9 @@ try {
   </section>
   <!-- Akhir Indikator Jumlah Pendaftar -->
 
-
-  <!-- Start Berita & Kegiatan -->
-  <div id="news" class="latest-news-area section">
-    <div class="section-title-five">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="content">
-              <h6>Berita & Kegiatan</h6>
-              <h2 class="fw-bold">Berita Terbaru SMK Prima Bangsa</h2>
-              <p>
-                Ikuti perkembangan kegiatan, prestasi, dan pengumuman penting dari SMK Prima Bangsa.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan Praktik" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
-                <span>Oleh Humas Mts</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)">Pelatihan Pemrograman untuk Siswa RPL</a>
-              </h4>
-              <p>
-                Siswa Rekayasa Perangkat Lunak mengikuti pelatihan intensif pengembangan aplikasi
-                guna meningkatkan kompetensi praktis menjelang ujian kompetensi.
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan TKJ" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
-                <span>Oleh Humas Mts</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)">Workshop Infrastruktur Jaringan untuk Siswa TKJ</a>
-              </h4>
-              <p>
-                Kegiatan workshop oleh mitra industri untuk meningkatkan kemampuan instalasi dan
-                konfigurasi jaringan siswa Teknik Komputer dan Jaringan.
-              </p>
-            </div>
-          </div>
-
-        </div>
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="single-news">
-            <div class="image">
-              <a href="javascript:void(0)"><img class="thumb" src="assets/images/blog/images-not-found.png" alt="Kegiatan DKV" /></a>
-              <div class="meta-details">
-                <img class="thumb" src="assets/images/blog/images-not-found.png" alt="Humas" />
-                <span>Oleh Humas Mts</span>
-              </div>
-            </div>
-            <div class="content-body">
-              <h4 class="title">
-                <a href="javascript:void(0)">Pameran Karya Siswa DKV: Kreativitas Digital</a>
-              </h4>
-              <p>
-                Siswa Desain Komunikasi Visual memamerkan portofolio terbaik hasil kolaborasi antar siswa
-                dan instruktur dalam proyek multimedia.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Akhir Berita & Kegiatan Area -->
-
-    <!-- Awal Daftar Pendaftar -->
-  <section id="daftar-pendaftar" class="section">
-    <div class="container">
-      <div class="section-title-five">
-        <div class="row">
-          <div class="col-12">
-            <div class="content">
-              <h6>Daftar Pendaftar</h6>
-              <h2 class="fw-bold">Siswa yang Telah Mendaftar</h2>
-              <p>Di bawah ini daftar pendaftar yang masuk melalui formulir pendaftaran.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Pendaftaran Form -->
-      <!-- <div id="pendaftaran-form" class="row mb-4">
-        <div class="col-12">
-          <div class="card p-3">
-            <h5>Form Pendaftaran Siswa Baru</h5>
-            <form action="controllers/pendaftaran_create.php" method="post" enctype="multipart/form-data">
-              <div class="row">
-                <div class="col-md-4 mb-2"><input class="form-control" name="nisn" placeholder="NISN" required></div>
-                <div class="col-md-8 mb-2"><input class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" required></div>
-              </div>
-              <div class="row">
-                <div class="col-md-4 mb-2"><input class="form-control" name="tempat_lahir" placeholder="Tempat Lahir"></div>
-                <div class="col-md-4 mb-2"><input type="date" class="form-control" name="tanggal_lahir" placeholder="Tanggal Lahir"></div>
-                <div class="col-md-4 mb-2">
-                  <select class="form-control" name="jenis_kelamin">
-                    <option value="">- Jenis Kelamin -</option>
-                    <option value="Laki-laki">Laki-laki</option>
-                    <option value="Perempuan">Perempuan</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 mb-2"><textarea class="form-control" name="alamat" placeholder="Alamat"></textarea></div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 mb-2"><input class="form-control" name="asal_sekolah" placeholder="Asal Sekolah"></div>
-                <div class="col-md-6 mb-2"><input class="form-control" name="no_hp" placeholder="No. HP" required></div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 mb-2"><input type="email" class="form-control" name="email" placeholder="Email" required></div>
-                <div class="col-md-6 mb-2">
-                  <select class="form-control" name="program_keahlian">
-                    <option value="">- Pilih Program Keahlian -</option>
-                    <option value="Rekayasa Perangkat Lunak (RPL)">Rekayasa Perangkat Lunak (RPL)</option>
-                    <option value="Teknik Komputer Jaringan (TKJ)">Teknik Komputer Jaringan (TKJ)</option>
-                    <option value="Desain Komunikasi Visual (DKV)">Desain Komunikasi Visual (DKV)</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 mb-2">
-                  <label class="form-label">Foto Formal (jpg/png, max 2MB)</label>
-                  <input type="file" class="form-control" name="foto_formal" accept="image/*" required>
-                </div>
-                <div class="col-md-6 mb-2">
-                  <label class="form-label">Foto Ijazah (jpg/png, max 2MB)</label>
-                  <input type="file" class="form-control" name="foto_ijazah" accept="image/*" required>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 text-end mt-2">
-                  <button class="btn primary-btn" type="submit">Daftar</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div> -->
-      <div class="row">
-        <div class="col-12">
-          <div class="table-responsive">
-            <?php if (!empty($db_error)) : ?>
-              <div class="alert alert-danger">Gagal mengambil data dari database: <?= htmlspecialchars($db_error); ?></div>
-            <?php elseif (empty($pendaftar_rows)) : ?>
-              <div class="alert alert-info">Belum ada data pendaftar.</div>
-            <?php else : ?>
-              <table class="table table-striped table-bordered">
-                <thead class="table-dark">
-                  <tr>
-                    <th>NO</th>
-                    <th>NISN</th>
-                    <th>Nama Lengkap</th>
-                    <th>TTL</th>
-                    <th>JK</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php $i = 1; foreach ($pendaftar_rows as $row) : ?>
-                    <tr>
-                      <td><?= $i++; ?></td>
-                      <td><?= htmlspecialchars($row['nisn'] ?? ''); ?></td>
-                      <td><?= htmlspecialchars($row['nama_lengkap'] ?? ''); ?></td>
-                      <td>
-                        <?= htmlspecialchars(($row['tempat_lahir'] ?? '') . ' / ' . ($row['tanggal_lahir'] ?? '')); ?>
-                      </td>
-                      <td><?= htmlspecialchars($row['jenis_kelamin'] ?? ''); ?></td>
-                    </tr>
-                  <?php endforeach; ?>
-                </tbody>
-              </table>
-            <?php endif; ?>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Akhir Daftar Pendaftar -->
-
   <!-- Awal Client Area -->
   <div id="clients" class="brand-area section">
-    <div class="section-title-five">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="content">
-              <h6>Mitra Industri</h6>
-              <h2 class="fw-bold">Kerjasama & Mitra</h2>
-              <p>
-                SMK Prima Bangsa bekerja sama dengan berbagai perusahaan dan lembaga untuk
-                mendukung pembelajaran vokasi dan penempatan kerja lulusan.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-<div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2 col-12">
-          <div class="clients-logos">
-            <div class="single-image">
-              <img src="assets/images/client-logo/jagantaragroup.svg" alt="Brand Logo Images" />
-            </div>
-            <div class="single-image">
-              <img src="assets/images/client-logo/kelasIoT.svg" alt="Brand Logo Images" />
-            </div>
-            <div class="single-image">
-              <img src="assets/images/client-logo/mandatera-tech.svg" alt="Brand Logo Images" />
-            </div>
-            <div class="single-image">
-              <img src="assets/images/client-logo/Nusabot.svg" alt="Brand Logo Images" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
   <!-- Akhir Client Area -->
    
@@ -869,7 +705,7 @@ try {
               <h6>Testimonial</h6>
               <h2 class="fw-bold">Testimoni Siswa & Alumni</h2>
               <p>
-                Dengarkan langsung pengalaman dari siswa dan alumni SMK Prima Bangsa
+                Simak pengalaman inspiratif dari siswa dan alumni MTs An-Nur Kota Cirebon.
               </p>
             </div>
           </div>
@@ -882,13 +718,12 @@ try {
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-testimonial">
             <div class="image" style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%;">
-              <img src="assets/images/testimonial/rakabuming.jpeg" alt="Siswa" style="width: 100%; height: auto;">
+              <img src="assets/images/testimonial/" alt="Siswa" style="width: 100%; height: auto;">
             </div>
             <div class="content">
-              <p>"SMK Prima Bangsa memberikan fondasi yang kuat untuk karir saya di bidang IT. 
-                 Pembelajaran praktis dan fasilitas lengkap sangat membantu pengembangan skill."</p>
-              <h4>Rakabuming</h4>
-              <span>Alumni RPL 2024 - Software Engineer di Tech Corp</span>
+              <p>"MTs An-Nur membentuk karakter saya menjadi lebih disiplin dan religius. Kegiatan ekstrakurikuler sangat bermanfaat untuk pengembangan diri."</p>
+              <h4>Ahmad Fauzi</h4>
+              <span>Alumni 2025 - Mahasiswa UIN Sunan Gunung Djati</span>
             </div>
           </div>
         </div>
@@ -896,13 +731,12 @@ try {
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-testimonial">
             <div class="image"style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%;">
-              <img src="assets/images/testimonial/bahlil.jpg" alt="Siswa" style="width: 100%; height: auto;">
+              <img src="assets/images/testimonia/" alt="Siswa" style="width: 100%; height: auto;">
             </div>
             <div class="content">
-              <p>"Program TKJ di sini sangat komprehensif. Saya mendapatkan sertifikasi industri 
-                 dan langsung diterima kerja setelah lulus."</p>
-              <h4>Lahlil Ethanol</h4>
-              <span>Alumni TKJ 2024 - Network Engineer</span>
+              <p>"Lingkungan madrasah yang Islami dan guru-guru yang peduli membuat saya betah belajar di MTs An-Nur. Saya juga aktif di Pramuka dan Hadroh."</p>
+              <h4>Siti Nurhaliza</h4>
+              <span>Siswa Kelas IX - Ketua Pramuka</span>
             </div>
           </div>
         </div>
@@ -910,13 +744,12 @@ try {
         <div class="col-lg-4 col-md-6 col-12">
           <div class="single-testimonial">
             <div class="image" style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%;">
-              <img src="assets/images/testimonial/mulyono.jpeg" alt="Siswa" style="width: 100%; height: auto;">
+              <img src="assets/images/testimonial/" alt="Siswa" style="width: 100%; height: auto;">
             </div>
             <div class="content">
-              <p>"Fasilitas studio DKV yang lengkap dan guru-guru profesional membantu saya 
-                 mengembangkan portofolio yang berkualitas."</p>
+              <p>"Saya bangga menjadi bagian dari MTs An-Nur. Banyak pengalaman berharga, terutama saat mengikuti lomba MTQ dan kegiatan sosial madrasah."</p>
               <h4>Mulyono</h4>
-              <span>Siswa DKV Kelas XII</span>
+              <span>Siswa Kelas VIII - Juara MTQ Kota Cirebon</span>
             </div>
           </div>
         </div>
@@ -951,7 +784,7 @@ try {
                   </div>
                   <div class="contact-content">
                     <h4>Alamat</h4>
-                    <p>Jl.Brigjend Dharsono Bypass No.20,</p>
+                    <p>JL.Pangeran Drajat Karanganyar Jagasatru Selatan</p>
                     <p>Kabupaten Cirebon</p>
                   </div>
                 </div>
@@ -1042,7 +875,7 @@ try {
   <!-- ========================= map-section ========================= -->
   <section class="map-section map-style-9">
       <div class="map-container">
-      <object title="Peta SMK Prima Bangsa - Cirebon" style="border:0; height: 500px; width: 100%;"
+      <object title="Peta Mts An-Nur Kota Cirebon" style="border:0; height: 500px; width: 100%;"
         data="https://www.google.com/maps?q=Cirebon%2C%20Indonesia&output=embed"></object>
     </div>
     </div>
@@ -1068,7 +901,7 @@ try {
                 </p>
                 <p class="copyright-text">
                   <span>© 2026 MTs An-Nur Kota Cirebon</span>
-                  <br>Cideng, Jl. Brigjend Dharsono Bypass No.20, Kertawinangun, Kec. Kedawung, Kabupaten Cirebon<br>
+                  <br>JL.Pangeran Drajat Karanganyar Jagasatru Selatan<br>
                   Telp: (021) 1234-5678<br>
                   Email: info@mtsan-nurcirebon.sch.id
                 </p>
@@ -1076,11 +909,11 @@ try {
             </div>
             <div class="col-lg-2 col-md-6 col-12">
               <div class="footer-widget f-link">
-                <h5>Program Kami</h5>
+                <h5>Ekstrakulikuler Kami</h5>
                 <ul>
-                  <li><a href="#services">Rekayasa Perangkat Lunak</a></li>
-                  <li><a href="#services">Teknik Komputer dan Jaringan</a></li>
-                  <li><a href="#services">Desain Komunikasi Visual</a></li>
+                  <li><a href="#services">Pramuka</a></li>
+                  <li><a href="#services">Futsal</a></li>
+                  <li><a href="#services">English Club</a></li>
                   <li><a href="#facilities">Fasilitas</a></li>
                 </ul>
               </div>
@@ -1101,9 +934,9 @@ try {
                 <h5>Media Sosial</h5>
                 <p>Ikuti kami di media sosial untuk informasi terbaru</p>
                 <div class="social-icons text-dark py-3">
-                  <a href="https://facebook.com/smkprimabangsa" target="_blank" class="text-dark lni lni-facebook-filled"> Facebook</a> |
-                  <a href="https://instagram.com/smkprimabangsa" target="_blank" class="text-dark lni lni-instagram-original"> Instagram</a> |
-                  <a href="https://youtube.com/smkprimabangsa" target="_blank" class="text-dark lni lni-youtube"> YouTube</a>
+                  <a href=" " target="_blank" class="text-dark lni lni-facebook-filled"> Facebook</a> |
+                  <a href=" " target="_blank" class="text-dark lni lni-instagram-original"> Instagram</a> |
+                  <a href=" " target="_blank" class="text-dark lni lni-youtube"> YouTube</a>
                 </div>
               </div>
             </div>
@@ -1133,7 +966,6 @@ try {
       navbarTogglerNine.classList.toggle("active");
     });
 
-    // ==== left sidebar toggle
     let sidebarLeft = document.querySelector(".sidebar-left");
     let overlayLeft = document.querySelector(".overlay-left");
     let sidebarClose = document.querySelector(".sidebar-close .close");
@@ -1157,7 +989,7 @@ try {
 
     //========= glightbox
     GLightbox({
-      'href': 'https://www.youtube.com/watch?v=-rRAuQzVq4s',
+      'href': 'https://www.youtube.com/watch?v=LzdsUZcw8L4',
       'type': 'video',
       'source': 'youtube', 
       'width': 900,
