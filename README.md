@@ -3,6 +3,7 @@
 SMK Prima Bangsa adalah Sekolah Menengah Kejuruan yang fokus pada kompetensi vokasi di bidang teknologi, jaringan, dan desain. Situs ini menyajikan profil sekolah, program keahlian, fasilitas, berita kegiatan, testimoni siswa & alumni, serta kontak/pendaftaran.
 
 Preview
+<img width="947" height="420" alt="{107D17C2-0053-4E86-8BCB-A580FC9AB2D4}" src="https://github.com/user-attachments/assets/553150e5-df2e-4a16-a3d6-254e4a90925f" />
 -------
 - Buka file `index.php` di folder proyek untuk melihat tampilan situs secara lokal.
 - web public : https://primaweb.wuaze.com/
